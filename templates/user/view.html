@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zing MP3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../static/js/loadLayout.js"></script>
+    <script>
+        function load(){
+            loadLayoutMenu();
+            loadLayoutMenu();
+            loadLayoutLogin();
+            loadLayoutCarousel();
+            loadLayoutMainContent();
+            loadLayoutMainTaskbar();
+            loadLayoutMainAdv();
+            loadLayoutFooter();
+        }
+    </script>
+    <script src="../static/js/login.js"></script>
+    <link rel="stylesheet" href="../static/css/login.css">
+
+</head>
+<body onload="load()">
+
+<div class="container">
+    <div id="layout_menu"></div>
+    <div id="layout_login"></div>
+    <div id="layout_carousel"></div>
+    <div id="layout_main">
+        <div id="layout_mainContent"></div>
+        <div id="layout_mainTaskbar"></div>
+        <div id="layout_mainAdv"></div>
+    </div>
+    <div id="layout_footer"></div>
+</div>
+</body>
+</html>
