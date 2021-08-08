@@ -116,7 +116,7 @@ function closeRegisterForm() {
                                          style="width: 20px"></button>
                             </div>
                             <div class="element">
-                                <button id="btn_login" onclick="login()">Login</button>
+                                <button id="btn_login" onclick="user_login()">Login</button>
                             </div>
                         </td>
                         <td>
@@ -150,7 +150,7 @@ function closeRegisterForm() {
     $("#formLoginRegister").html(content);
 }
 
-function login() {
+function user_login() {
     closeLoginForm();
     let username = $("#username").val();
     let password = $("#password").val();
