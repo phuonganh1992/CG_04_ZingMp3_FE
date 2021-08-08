@@ -102,6 +102,7 @@ function editUser() {
         success: function () {
             $("#message").text("User is edited successfully");
             $("#user_edit_password").attr("type", "password");
+            localStorage.setItem("userLogin",JSON.stringify(userEdit))
         },
         error: function (e) {
             alert("Server error: " + e);

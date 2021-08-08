@@ -232,7 +232,7 @@ function hasUserLogin() {
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" onclick="redirectView()">Trang cá nhân</a></li>
                                 <li><a class="dropdown-item" href="#">Nhạc của tui</a></li>
-                                <li><a class="dropdown-item" href="#">Quản lý user</a></li>
+                                <li><a class="dropdown-item" onclick="redirectListUser()">Quản lý user</a></li>
                                 <li><a class="dropdown-item" href="#">Quản lý ca sĩ</a></li>
                                 <li><a class="dropdown-item" href="#">Quản lý bài hát</a></li>
                                 <li><a class="dropdown-item" href="#">Lịch sử</a></li>
@@ -279,4 +279,7 @@ function logout() {
 
 function redirectView(){
     window.location.href="user/view.html";
+}
+function redirectListUser(){
+    window.location.href="user/list.html";
 }
