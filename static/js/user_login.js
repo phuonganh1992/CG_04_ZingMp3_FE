@@ -190,12 +190,7 @@ function register() {
     else {
         let user = {
             username: username,
-            password: password,
-            roles:[
-                {
-                "name":"ROLE_USER"
-                }
-            ]
+            password: password
         };
         $.ajax({
             type: "POST",
@@ -235,7 +230,7 @@ function hasUserLogin() {
                                 ${userLogin.username}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" onclick="viewUser()">Trang cá nhân</a></li>
+                                <li><a class="dropdown-item" onclick="redirectView()">Trang cá nhân</a></li>
                                 <li><a class="dropdown-item" href="#">Nhạc của tui</a></li>
                                 <li><a class="dropdown-item" href="#">Quản lý user</a></li>
                                 <li><a class="dropdown-item" href="#">Quản lý ca sĩ</a></li>
@@ -251,7 +246,7 @@ function hasUserLogin() {
                                 ${userLogin.username}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" onclick="viewUser()">Trang cá nhân</a></li>
+                                <li><a class="dropdown-item" onclick="redirectView()">Trang cá nhân</a></li>
                                 <li><a class="dropdown-item" href="#">Nhạc của tui</a></li>
                                 <li><a class="dropdown-item" href="#">Lịch sử</a></li>
                                 <li><a class="dropdown-item" onclick="logout()">Sign out</a></li>
@@ -282,6 +277,6 @@ function logout() {
     $("#btn_login_signup").html(content);
 }
 
-function viewUser(){
+function redirectView(){
     window.location.href="user/view.html";
 }
