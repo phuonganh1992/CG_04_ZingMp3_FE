@@ -2,42 +2,85 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Zing MP3</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    <title>View User</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../static/js/loadLayout.js"></script>
+    <script src="../../static/js/loadLayout.js"></script>
     <script>
         function load(){
             loadLayoutMenu();
             loadLayoutMenu();
             loadLayoutLogin();
-            loadLayoutCarousel();
             loadLayoutMainContent();
             loadLayoutMainTaskbar();
             loadLayoutMainAdv();
             loadLayoutFooter();
+            hasUserLogin();
+            viewUserInfor();
+            viewUserAccount();
         }
     </script>
-    <script src="../static/js/login.js"></script>
-    <link rel="stylesheet" href="../static/css/login.css">
+
+    <link rel="stylesheet" href="../../static/css/login.css">
+    <script src="../../static/js/viewUser.js"></script>
+
 
 </head>
 <body onload="load()">
 
-<div class="container">
+<div class="container" id="userInfo">
     <div id="layout_menu"></div>
     <div id="layout_login"></div>
-    <div id="layout_carousel"></div>
-    <div id="layout_main">
-        <div id="layout_mainContent"></div>
-        <div id="layout_mainTaskbar"></div>
-        <div id="layout_mainAdv"></div>
+    <div id="user-profile" class="row mt-2" style="background:url('https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/background_02_userProfile.jpg?alt=media&token=929f9244-b1e7-4c85-b680-4e154e28dcb5')">
+        <div id="user-profile-left" class="col-2"></div>
+        <div id="user-profile-main" class="col-3"></div>
+        <div id="user-profile-right" class="col-7">
+            content linh tinh khác
+        </div>
+    </div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_01_home.png?alt=media&token=35fec41e-91a2-41d0-b1c1-77b50be6f342" style="width: 40px;height: 40px">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Playlist</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Video</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tui Upload</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bạn bè</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="row mt-3" id="layout_main">
+        <div class="col-7 text-center" id="layout_mainContent" style="background-color: palegoldenrod">
+            Main
+        </div>
+        <div class="col-3 text-center" id="layout_mainTaskbar" style="background-color: #00dbde">
+            Task bar
+        </div>
+
+        <div class="col-2 text-center" id="layout_mainAdv" style="background-color: orange">
+            Advertise
+        </div>
     </div>
     <div id="layout_footer"></div>
 </div>
+<script src="../../static/js/login.js"></script>
+
 </body>
 </html>

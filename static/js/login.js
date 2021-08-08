@@ -173,7 +173,7 @@ function login() {
                 url: "http://localhost:8080/user/api/search?username=" + username,
                 success: function (userlogin) {
                     localStorage.setItem('userLogin', JSON.stringify(userlogin));
-                    changeAvatar();
+                    hasUserLogin();
                 }
             })
         }
@@ -188,7 +188,12 @@ function register() {
     else {
         let user = {
             username: username,
-            password: password
+            password: password,
+            roles:[
+                {
+                "name":"ROLE_USER"
+                }
+            ]
         };
         $.ajax({
             type: "POST",
@@ -205,22 +210,27 @@ function register() {
     }
 }
 
-function changeAvatar() {
-    let userLogin = JSON.parse(localStorage.getItem("userLogin"));
-    let roles=userLogin.roles;
-    let hasAdminRole=false;
+function hasUserLogin() {
     let content="";
-    for (let i = 0; i < roles.length; i++) {
-        if(roles[i].name=="ROLE_ADMIN") {
-            hasAdminRole=true;
-            break;
+    let userLogin = JSON.parse(localStorage.getItem("userLogin"));
+    if(userLogin==null){
+        content=`<li class="nav-item" id="btn_login_signup">
+                            <button class="btn btn-outline-success" type="submit" onclick="openLoginForm()">Login/SignUp</button>
+                        </li>`;
+    } else {
+        let roles=userLogin.roles;
+        let hasAdminRole=false;
+        for (let i = 0; i < roles.length; i++) {
+            if(roles[i].name=="ROLE_ADMIN") {
+                hasAdminRole=true;
+                break;
+            }
         }
-    }
-    if(hasAdminRole){
-        content = `<li class="nav-item dropdown" id="avatar">
+        if(hasAdminRole){
+            content = `<li class="nav-item dropdown" id="avatar_admin">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="${userLogin.image}" alt="" style="width: 35px; height: 35px;border-radius: 50%">
-                                ${userLogin.username} 
+                                ${userLogin.username}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" onclick="viewUser()">Trang cá nhân</a></li>
@@ -232,11 +242,11 @@ function changeAvatar() {
                                 <li><a class="dropdown-item" onclick="logout()">Sign out</a></li>
                             </ul>
                         </li>`
-    } else {
-        content=`<li class="nav-item dropdown" id="avatar">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        } else {
+            content=`<li class="nav-item dropdown" id="avatar_user">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown7" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="${userLogin.image}" alt="" style="width: 35px; height: 35px;border-radius: 50%">
-                                ${userLogin.username} 
+                                ${userLogin.username}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" onclick="viewUser()">Trang cá nhân</a></li>
@@ -245,6 +255,7 @@ function changeAvatar() {
                                 <li><a class="dropdown-item" onclick="logout()">Sign out</a></li>
                             </ul>
                         </li>`;
+        }
     }
     $("#btn_login_signup").html(content);
 }
