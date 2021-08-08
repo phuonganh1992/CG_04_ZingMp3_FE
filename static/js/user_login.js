@@ -116,7 +116,7 @@ function closeRegisterForm() {
                                          style="width: 20px"></button>
                             </div>
                             <div class="element">
-                                <button id="btn_login" onclick="user_login()">Login</button>
+                                <button id="btn_login" onclick="login()">Login</button>
                             </div>
                         </td>
                         <td>
@@ -150,7 +150,7 @@ function closeRegisterForm() {
     $("#formLoginRegister").html(content);
 }
 
-function user_login() {
+function login() {
     closeLoginForm();
     let username = $("#username").val();
     let password = $("#password").val();
@@ -158,6 +158,7 @@ function user_login() {
         "username": username,
         "password": password
     }
+
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -174,6 +175,7 @@ function user_login() {
                 success: function (userlogin) {
                     localStorage.setItem('userLogin', JSON.stringify(userlogin));
                     hasUserLogin();
+                    localStorage.setItem('haha','cười to')
                 }
             })
         }
