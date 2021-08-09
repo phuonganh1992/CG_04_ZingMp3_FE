@@ -8,9 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/login.css">
+    <script src="../static/js/playlist.js"></script>
 
 </head>
-<body onload="hasUserLogin()">
+<body onload="hasUserLogin();showList()">
 <div class="container">
     <div class="row mt-3 fixed-top" id="layout_menu">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -137,6 +138,17 @@
     <div class="row mt-3" id="layout_main">
         <div class="col-7 text-center" id="layout_mainContent" style="background-color: palegoldenrod">
             Main
+            <div class="row mt-3" id="layout_Playlist">
+                <div class="card" style="width: 20rem;">
+                    <img class="card-img-top" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/music-album.png?alt=media&token=28321141-6a18-4afb-96de-a4547a6e9cd6" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="col-3 text-center" id="layout_mainTaskbar" style="background-color: #00dbde">
             Task bar

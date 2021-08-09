@@ -2,7 +2,7 @@ function loadLayoutMenu(){
     let content=`<div class="row mt-3" id="layout_menu">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="https://lndesign.com.vn/wp-content/uploads/2021/01/thiet-ke-logo-am-nhac-1.jpg" alt="" style="width: 100px;height: 100px"></a>
+                <a class="navbar-brand" href="#"><img src="https://lndesign.com.vn/wp-content/uploads/2021/01/thiet-ke-logo-am-nhac-1.jpg" onclick="redirectHome()" alt="" style="width: 100px;height: 100px"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -10,6 +10,7 @@
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../static/js/loadLayout.js"></script>
+    <script src="../static/js/playlist.js"></script>
     <script>
         function load(){
             loadLayoutMenu();
@@ -20,10 +21,13 @@
             loadLayoutMainTaskbar();
             loadLayoutMainAdv();
             loadLayoutFooter();
+            hasUserLogin();
+            viewUserInfor();
         }
     </script>
     <script src="../static/js/user_login.js"></script>
     <link rel="stylesheet" href="../static/css/login.css">
+
 
 </head>
 <body onload="load()">
@@ -32,7 +36,11 @@
     <div id="layout_login"></div>
     <div id="layout_carousel"></div>
     <div id="layout_main">
-        <div id="layout_mainContent"></div>
+        <div id="layout_mainContent">
+            <div id="layout_Playlist">
+
+            </div>
+        </div>
         <div id="layout_mainTaskbar"></div>
         <div id="layout_mainAdv"></div>
     </div>
