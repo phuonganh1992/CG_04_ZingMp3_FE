@@ -5,31 +5,31 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body onload="loadData()">
+<body onload="getUserSong()">
 <div id="content">Content</div>
 <div id="form">
     <button onclick="showFormCreate()">Add</button>
-    <table>
-        <tr><input type="text" placeholder="tên bài hát" id="namesong"></tr>
-        <tr><input type="text" placeholder="Mô tả" id="description"></tr>
-        <tr>
-            <td></td>
-            <input type="text" placeholder="Ảnh nè" id="img"></tr>
-        <tr><input type="text" placeholder="file MP3" id="mp3"></tr>
-        <tr><select id="artist"></select></tr>
-        <tr><select id="user"></select></tr>
-        <tr><button onclick="save()">SAVE</button></tr>
-
-
-
-
-
-
-
-
-    </table>
 
 </div>
+<script>
+    function getUserSong() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/user/api/list",
+            success: function (data) {
+                console.log(data)
+                let content = "";
+                for (let i = 0; i < data.length; i++) {
+                    content += `<option value="${data[i].id}">${data[i].username}</option>`
+                    console.log(data[i].username)
+
+                }
+                console.log(content)
+                document.getElementById("song_user").innerHTML = content;
+            }
+        })
+    }
+</script>
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
@@ -50,14 +50,14 @@
     firebase.analytics();
     console.log(firebase)
 
-    function uploadAudio(){
-        const  ref=firebase.storage().ref();
-        const file=document.querySelector("#audio").files[0];
-        const name=file.name;
-        const metadata={
-            contentType:file.type
+    function uploadAudio() {
+        const ref = firebase.storage().ref();
+        const file = document.querySelector("#audio").files[0];
+        const name = file.name;
+        const metadata = {
+            contentType: file.type
         }
-        const task=ref.child(name).put(file,metadata);
+        const task = ref.child(name).put(file, metadata);
 
         task
             .then(snapshot => snapshot.ref.getDownloadURL())
@@ -69,13 +69,13 @@
     }
 </script>
 <script>
-    function loadData(){
+    function loadData() {
         $.ajax({
             type: "GET",
             url: "http://localhost:8080/api/songs",
-            success: function (data){
+            success: function (data) {
                 console.log(data)
-                let content ="        <tr>\n" +
+                let content = "        <tr>\n" +
                     "            <th>Id</th>\n" +
                     "            <th>Name Song</th>\n" +
                     "            <th>Desc</th>\n" +
@@ -84,71 +84,100 @@
                     "            <th>Singer </th>\n" +
                     "            <th>User </th>\n" +
                     "        </tr>";
-                for (let i =0;i<data.length;i++){
-                    content +="<p>"+data[i].id+":"+data[i].name+":"+data[i].description+":"+data[i].img+":"+data[i].createDate+":"+data[i].artist.name+":"+data[i].user.name+"</p>"
+                for (let i = 0; i < data.length; i++) {
+                    content += "<p>" + data[i].id + ":" + data[i].name + ":" + data[i].description + ":" + data[i].img + ":" + data[i].createDate + ":" + data[i].artist.name + ":" + data[i].user.name + "</p>"
 
                 }
-                document.getElementById("content").innerHTML=content;
+                document.getElementById("content").innerHTML = content;
             }
 
         });
     }
-    function showFormCreate(){
-        document.getElementById("form").innerHTML='<input type="text" placeholder="tên bài hát" id="namesong">\n'+
-            '<input type="text" placeholder="Mô tả" id="description">\n'+
-            '<input type="text" placeholder="Ảnh nè" id="img">\n'+
-            '<input type="text" placeholder="file MP3" id="mp3">\n'+
-            '<input type="date" placeholder="Ngày tạo" id="date">\n'+
-            '<select id="artist"></select>\n'+
-            '<select id="user"></select>\n'+
-            '<button onclick="save()">SAVE</button>\n'
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/api/artist",
-            success: function (data){
-                console.log(data)
-                let str ="";
-                for (let i =0;i<data.length;i++){
-                    str +="<option value='"+data[i].id+"'>"+data[i].id+"</option>"
 
-                }
-                document.getElementById("artist").innerHTML=str;
-            },
-            error:function (error){
+    function showFormCreate() {
+        let content = ` <table>
+    <tr>
+        <td>
+            <input type="text" placeholder="tên bài hát" id="namesong">
+        </td>
+    </tr>
+    <tr>
+        <td><input type="text" placeholder="Mô tả" id="description"></td>
+    </tr>
+    <tr>
+        <td><input type="text" placeholder="Ảnh nè" id="img"></td>
+        <td>
+            <button>Upload Image</button>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="text" placeholder="file MP3" id="mp3"></td>
+        <td>
+            <button>Upload mp3</button>
+        </td>
+    </tr>
+    <tr>
+        <td><select id="song_artist"></select></td>
+    </tr>
+    <tr>
+        <td><select id="song_user"></td>
 
-            }
+        </select></tr>
+    <tr>
+        <td><button onclick="save()">SAVE</button></td>
 
-        });
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8080/api/list",
-            success: function (data){
-                console.log(data)
-                let str ="";
-                for (let j =0;j<data.length;j++){
-                    str +="<option value='"+data[j].id+"'>"+data[j].id+"</option>"
+    </tr>
+</table>`;
+        $("#form").html(content);
 
-                }
-                document.getElementById("user").innerHTML=str;
-            },
-            error:function (error){
-
-            }
-
-        });
-
+        // // $.ajax({
+        // //     type: "GET",
+        // //     url: "http://localhost:8080/api/artist",
+        // //     success: function (data) {
+        // //         console.log(data)
+        // //         let str = "";
+        // //         for (let i = 0; i < data.length; i++) {
+        // //             str += "<option value='" + data[i].id + "'>" + data[i].id + "</option>"
+        // //
+        // //         }
+        // //         document.getElementById("artist").innerHTML = str;
+        // //     },
+        // //     error: function (error) {
+        // //
+        // //     }
+        // //
+        // // });
+        // $.ajax({
+        //     type: "GET",
+        //     url: "http://localhost:8080/user/api/list",
+        //     success: function (data) {
+        //         console.log(data)
+        //         let str = "";
+        //         for (let j = 0; j < data.length; j++) {
+        //             str += "<option value='" + data[j].id + "'>" + data[j].id + "</option>"
+        //
+        //         }
+        //         document.getElementById("user").innerHTML = str;
+        //     },
+        //     error: function (error) {
+        //
+        //     }
+        //
+        // });
     }
-    function save(){
-        let song ={name : document.getElementById("namesong").value,
-            description : document.getElementById("description").value,
-            img : document.getElementById("img").value,
-            mp3 : document.getElementById("mp3").value,
-            createDate : document.getElementById("date").value,
-            artist : {
-                id:document.getElementById("artist").value
+
+    function save() {
+        let song = {
+            name: document.getElementById("namesong").value,
+            description: document.getElementById("description").value,
+            img: document.getElementById("img").value,
+            mp3: document.getElementById("mp3").value,
+            createDate: document.getElementById("date").value,
+            artist: {
+                id: document.getElementById("artist").value
             },
-            user : {
-                id:document.getElementById("user").value
+            user: {
+                id: document.getElementById("user").value
             },
 
         }
@@ -167,7 +196,7 @@
             }
         });
 
-        document.getElementById("form").innerHTML='<button onclick="showFormCreate()">ADD</button>\n'
+        document.getElementById("form").innerHTML = '<button onclick="showFormCreate()">ADD</button>\n'
     }
 
 </script>

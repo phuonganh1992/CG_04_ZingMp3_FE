@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../static/js/loadLayout.js"></script>
+    <script>
+        function load() {
+            loadLayoutMenu();
+            loadLayoutLogin();
+            loadLayoutMainAdv();
+            loadLayoutFooter();
+            hasUserLogin();
+            getAllSong()
+
+        }
+    </script>
+    <link rel="stylesheet" href="../static/css/login.css">
+    <script src="../static/js/redirect.js"></script>
+    <script src="../static/js/user_list.js"></script>
+    <script src="../static/js/user_login.js"></script>
+    <script src="../static/js/user_view_edit.js"></script>
+    <script src="../static/js/playlist.js"></script>
+    <style>
+        img{display: block;max-width:100%;}
+        .dia-cd{
+            width:300px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            animation: xoayvong 20s linear 0s infinite;
+            -webkit-animation: xoayvong 20s linear 0s infinite;
+            -moz-animation: xoayvong 20s linear 0s infinite;
+            -o-animation: xoayvong 20s linear 0s infinite;
+        }
+
+        @-webkit-keyframes xoayvong{
+            from{
+                -webkit-transform:rotate(0deg);
+                -moz-transform:rotate(0deg);
+                -o-transform:rotate(0deg);
+            }
+            to{
+                -webkit-transform:rotate(360deg);
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+            }
+        }
+        /* Standard syntax */
+        @keyframes xoayvong {
+            from{
+                -webkit-transform:rotate(0deg);
+                -moz-transform:rotate(0deg);
+                -o-transform:rotate(0deg);
+            }
+            to{
+                -webkit-transform:rotate(360deg);
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+<body onload="load()">
+<div class="container">
+    <div id="layout_menu"></div>
+    <div id="layout_login"></div>
+    <div id="layout_main" class="row">
+        <div id="layout_mainPlaylist" class="col-3">
+            <div class="row">
+                <div class="card" style="width: 18rem;">
+                    <img class="dia-cd" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/playlist_img_01.jpg?alt=media&token=0ee5cb83-540f-4566-abce-1f2409384178" class="card-img-top" width="300px">
+                    <div class="card-body">
+                        <h5 class="card-title">Playlist name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="layout_mainTaskbarPlaylist" class="col-8">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Bài hát</th>
+                    <th scope="col">Thời gian</th>
+                    <th scope="col" colspan="2">Mặc định</th>
+                </tr>
+                </thead>
+                <tbody id="list_song">
+                <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="layout_mainAdv" class="col-1"></div>
+    </div>
+    <div id="layout_footer"></div>
+</div>
+
+<script>
+    function getAllSong() {
+
+        let content = "";
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/songs",
+            success: function (data) {
+
+                for (let i = 0; i < data.length; i++) {
+                    content+=`<tr>
+                    <td>${data[i].name}</td>
+                    <td>Otto</td>
+                    <td>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_03_comment.png?alt=media&token=bba6c830-7a8a-406d-a134-47b963510875" width="20px">
+                    </td>
+                    <td>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_04_unlike.png?alt=media&token=69f682e4-f421-4e51-af78-f74cbe0a3a18" width="20px">
+
+                    </td>
+                    <td>...</td>
+                </tr>`;
+                    console.log(data[i].mp3)
+                    let audio=new Audio(data[i].mp3);
+                    console.log(audio)
+                }
+                document.getElementById("list_song").innerHTML=content;
+            }
+        })
+        $("#list_song")
+    }
+
+</script>
+</body>
+</html>
