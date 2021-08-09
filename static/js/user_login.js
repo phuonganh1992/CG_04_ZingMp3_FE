@@ -235,7 +235,7 @@ function hasUserLogin() {
                                 <li><a class="dropdown-item" onclick="redirectListUser()">Quản lý user</a></li>
                                 <li><a class="dropdown-item" href="#">Quản lý ca sĩ</a></li>
                                 <li><a class="dropdown-item" href="#">Quản lý bài hát</a></li>
-                                <li><a class="dropdown-item" onclick="redirectPlaylist()" href="#">Quản lý playlist</a></li>
+                                <li><a class="dropdown-item" onclick="redirectPlaylist()" >Quản lý playlist</a></li>
                                 <li><a class="dropdown-item" href="#">Lịch sử</a></li>
                                 <li><a class="dropdown-item" onclick="logout()">Sign out</a></li>
                             </ul>
@@ -278,15 +278,3 @@ function logout() {
     $("#btn_login_signup").html(content);
 }
 
-function redirectView(){
-    window.location.href="http://localhost:63343/ZingMp3_FE/templates/user/view.html";
-}
-function redirectListUser(){
-    window.location.href="http://localhost:63343/ZingMp3_FE/templates/user/list.html";
-}
-function redirectPlaylist(){
-    window.location.href="http://localhost:63343/ZingMp3_FE/templates/playlist/list.html"
-}
-function redirectHome(){
-    window.location.href="http://localhost:63343/ZingMp3_FE/templates/zing_home.html"
-}

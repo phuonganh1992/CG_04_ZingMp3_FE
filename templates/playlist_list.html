@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--//Link với thymeleaf-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--//Link với bootstrap-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<!--//Link với JQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Playlist</title>
+    <script src="../static/js/playlist.js"></script>
+    <link rel="stylesheet" href="../../static/css/login.css">
+    <script src="../static/js/loadLayout.js"></script>
+    <script src="../static/js/user_login.js"></script>
+    <script>
+        function load() {
+            loadLayoutMenu();
+            loadLayoutLogin();
+            loadLayoutMainContent();
+            loadLayoutMainTaskbar();
+            loadLayoutMainAdv();
+            loadLayoutFooter();
+            hasUserLogin();
+        }
+    </script>
+    <script src="../static/js/redirect.js"></script>
+
+</head>
+<body onload="showList();getUserPlaylist();loadModalPlaylist();load()">
+
+<div class="container">
+    <div id="layout_menu">
+
+    </div>
+    <div id="layout_login"></div>
+    <div id="layout_main">
+        <input type="text" id="searchKey">
+        <button type="button" onclick="search()">Search</button> <br>
+        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalCreate">Create Playlist</button>
+        <div id="listPlaylist">
+
+        </div>
+        <div id="modalPlaylist">
+
+        </div>
+    </div>
+
+    <div id="layout_footer"></div>
+
+</div>
