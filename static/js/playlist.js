@@ -4,7 +4,6 @@ function showList() {
         type: "GET",
         url: "http://localhost:8080/playlists",
         success: function (data) {
-            console.log(data)
             let content = `<table class="table table-striped">
         <thead>
         <tr>
@@ -94,20 +93,24 @@ function createPlaylist() {
     })
     event.preventDefault();
 }
-function getUser() {
+function getUserPlaylist() {
+    console.log(1)
     $.ajax({
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         url: "http://localhost:8080/user/api/list",
         type: "GET",
         success: function (data) {
-            console.log(data)
+            console.log(data);
+            console.log(1);
             let content = ``;
             for (let i = 0; i < data.length; i++) {
                 content += `<option value=${data[i].id} >${data[i].name} </option>`;
             }
             document.getElementById('modalCreate__user').innerHTML = content;
             document.getElementById('modalEdit__user').innerHTML = content;
+        }, error: function (err) {
+            console.log(err)
         }
 
 
@@ -124,7 +127,7 @@ function editPlaylist(id){
         type:"GET",
         url:"http://localhost:8080/playlists/" +id,
         success: function (data){
-            console.log(data)
+
             $('#modalEdit__id').val(data.id);
             $('#modalEdit__name').val(data.name);
             $('#modalEdit__description').val(data.description);
