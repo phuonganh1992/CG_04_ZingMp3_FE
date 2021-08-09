@@ -257,17 +257,6 @@ function hasUserLogin() {
     $("#btn_login_signup").html(content);
 }
 
-function getUser(id) {
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/user/api/" + id,
-        headers: {"Authorization": 'Bearer ' + localStorage.getItem("token")},
-        success: function (data) {
-            console.log(data);
-        }
-    })
-}
-
 function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("userLogin");
@@ -275,11 +264,4 @@ function logout() {
                      <button class="btn btn-outline-success" type="submit" onclick="openLoginForm()">Login/SignUp</button>
                    </li>`;
     $("#btn_login_signup").html(content);
-}
-
-function redirectView(){
-    window.location.href="user/view.html";
-}
-function redirectListUser(){
-    window.location.href="user/list.html";
 }

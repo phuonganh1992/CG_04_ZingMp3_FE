@@ -33,7 +33,7 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-    console.log(firebase)
+    // console.log(firebase)
 
     function uploadImage(){
         const  ref=firebase.storage().ref();
@@ -50,7 +50,9 @@
                 alert("Image upload successful");
                 const image=document.querySelector("#image");
                 image.src=url;
+                console.log(url)
                 document.getElementById('main').innerHTML = `<img src="${url}" alt=""> </<img>`
+
             })
     }
 </script>
