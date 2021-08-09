@@ -5,12 +5,171 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body>
-<img id="image" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/user_09.jpg?alt=media&token=d7a9df9b-d704-4157-af87-e2b37da206ce" alt="">
+<body onload="loadData()">
+<div id="content">Content</div>
+<div id="form">
+    <button onclick="showFormCreate()">Add</button>
+    <table>
+        <tr><input type="text" placeholder="tên bài hát" id="namesong"></tr>
+        <tr><input type="text" placeholder="Mô tả" id="description"></tr>
+        <tr>
+            <td></td>
+            <input type="text" placeholder="Ảnh nè" id="img"></tr>
+        <tr><input type="text" placeholder="file MP3" id="mp3"></tr>
+        <tr><select id="artist"></select></tr>
+        <tr><select id="user"></select></tr>
+        <tr><button onclick="save()">SAVE</button></tr>
 
+
+
+
+
+
+
+
+    </table>
+
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
 <script>
-    let a= $("#image").attr("src");
-    console.log(a);
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyAFa5LCC1hPnuBc5Lpv7YFrxSD59l-jc0E",
+        authDomain: "zingmp3-project.firebaseapp.com",
+        projectId: "zingmp3-project",
+        storageBucket: "zingmp3-project.appspot.com",
+        messagingSenderId: "586241566045",
+        appId: "1:586241566045:web:ab0014cb015f230821b4b4",
+        measurementId: "G-2LCN4JYDE5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    console.log(firebase)
+
+    function uploadAudio(){
+        const  ref=firebase.storage().ref();
+        const file=document.querySelector("#audio").files[0];
+        const name=file.name;
+        const metadata={
+            contentType:file.type
+        }
+        const task=ref.child(name).put(file,metadata);
+
+        task
+            .then(snapshot => snapshot.ref.getDownloadURL())
+            .then(url => {
+                console.log(url);
+                alert("Audio upload successful");
+                document.getElementById('main').innerHTML = `<audio controls preload="none"> <source src="${url}"> </audio>`
+            })
+    }
+</script>
+<script>
+    function loadData(){
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/songs",
+            success: function (data){
+                console.log(data)
+                let content ="        <tr>\n" +
+                    "            <th>Id</th>\n" +
+                    "            <th>Name Song</th>\n" +
+                    "            <th>Desc</th>\n" +
+                    "            <th>Img</th>\n" +
+                    "            <th>Date </th>\n" +
+                    "            <th>Singer </th>\n" +
+                    "            <th>User </th>\n" +
+                    "        </tr>";
+                for (let i =0;i<data.length;i++){
+                    content +="<p>"+data[i].id+":"+data[i].name+":"+data[i].description+":"+data[i].img+":"+data[i].createDate+":"+data[i].artist.name+":"+data[i].user.name+"</p>"
+
+                }
+                document.getElementById("content").innerHTML=content;
+            }
+
+        });
+    }
+    function showFormCreate(){
+        document.getElementById("form").innerHTML='<input type="text" placeholder="tên bài hát" id="namesong">\n'+
+            '<input type="text" placeholder="Mô tả" id="description">\n'+
+            '<input type="text" placeholder="Ảnh nè" id="img">\n'+
+            '<input type="text" placeholder="file MP3" id="mp3">\n'+
+            '<input type="date" placeholder="Ngày tạo" id="date">\n'+
+            '<select id="artist"></select>\n'+
+            '<select id="user"></select>\n'+
+            '<button onclick="save()">SAVE</button>\n'
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/artist",
+            success: function (data){
+                console.log(data)
+                let str ="";
+                for (let i =0;i<data.length;i++){
+                    str +="<option value='"+data[i].id+"'>"+data[i].id+"</option>"
+
+                }
+                document.getElementById("artist").innerHTML=str;
+            },
+            error:function (error){
+
+            }
+
+        });
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/list",
+            success: function (data){
+                console.log(data)
+                let str ="";
+                for (let j =0;j<data.length;j++){
+                    str +="<option value='"+data[j].id+"'>"+data[j].id+"</option>"
+
+                }
+                document.getElementById("user").innerHTML=str;
+            },
+            error:function (error){
+
+            }
+
+        });
+
+    }
+    function save(){
+        let song ={name : document.getElementById("namesong").value,
+            description : document.getElementById("description").value,
+            img : document.getElementById("img").value,
+            mp3 : document.getElementById("mp3").value,
+            createDate : document.getElementById("date").value,
+            artist : {
+                id:document.getElementById("artist").value
+            },
+            user : {
+                id:document.getElementById("user").value
+            },
+
+        }
+        console.log(song)
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            url: "http://localhost:8080/api/songs",
+            data: JSON.stringify(song),
+            success: loadData,
+            error: function (error) {
+
+            }
+        });
+
+        document.getElementById("form").innerHTML='<button onclick="showFormCreate()">ADD</button>\n'
+    }
+
 </script>
 </body>
 </html>
