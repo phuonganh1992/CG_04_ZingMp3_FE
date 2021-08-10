@@ -42,8 +42,13 @@
     let vol = document.querySelector("#vol");let timeline = document.querySelector("#timeline");
     let curTime = document.querySelector("#currentTime");
     let duraTime = document.querySelector("#durationTime");
+    let audio=new Audio("https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/song_muon%20roi%20ma%20sao%20con.mp3?alt=media&token=9898493e-2542-4839-a0a8-39ba0c7dc643")
+    let totalTime=0;
     play.onclick = function(){
         video.play();
+         let totalTime=audio.duration;
+        alert(totalTime)
+
     }
     pause.onclick = function(){
         video.pause();

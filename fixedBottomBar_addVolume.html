@@ -33,7 +33,6 @@
         body #music_player .volume_slider{
             background: #301643;
             height: 4rem;
-
             width: 22rem;
             position: absolute;
             bottom: 0;
@@ -96,7 +95,7 @@
             color: #83649f;
         }
 
-        input[type=range] {
+        input[type=range]  {
             -webkit-appearance: none;
             border: 1px solid white;
             border-radius: 2px;
@@ -178,6 +177,89 @@
         input[type=range]:focus::-ms-fill-upper {
             background: #ccc;
         }
+
+        /*#time,#vol  {*/
+        /*    -webkit-appearance: none;*/
+        /*    border: 1px solid white;*/
+        /*    border-radius: 2px;*/
+        /*    width: 12rem;*/
+        /*    top: 1rem;*/
+        /*    left: 0;*/
+        /*    right: 0;*/
+        /*    margin: auto;*/
+        /*    position: absolute;*/
+        /*}*/
+        /*#time,#vol::-webkit-slider-runnable-track {*/
+        /*    width: 300px;*/
+        /*    height: 5px;*/
+        /*    background: #8664a1;*/
+        /*    border: none;*/
+        /*    border-radius: 3px;*/
+        /*}*/
+        /*#time,#vol::-webkit-slider-thumb {*/
+        /*    -webkit-appearance: none;*/
+        /*    border: 3px solid #fff;*/
+        /*    height: 16px;*/
+        /*    width: 16px;*/
+        /*    border-radius: 50%;*/
+        /*    background: #9200ff;*/
+        /*    margin-top: -4px;*/
+        /*}*/
+        /*#time,#vol:focus {*/
+        /*    outline: none;*/
+        /*}*/
+        /*#time,#vol:focus::-webkit-slider-runnable-track {*/
+        /*    background: #8664a1;*/
+        /*}*/
+        /*#time,#vol::-moz-range-track {*/
+        /*    width: 300px;*/
+        /*    height: 5px;*/
+        /*    background: #8664a1;*/
+        /*    border: none;*/
+        /*    border-radius: 3px;*/
+        /*}*/
+        /*#time,#vol::-moz-range-thumb {*/
+        /*    -webkit-appearance: none;*/
+        /*    border: 3px solid #fff;*/
+        /*    height: 16px;*/
+        /*    width: 16px;*/
+        /*    border-radius: 50%;*/
+        /*    background: #9200ff;*/
+        /*    margin-top: -4px;*/
+        /*}*/
+        /*#time,#vol:-moz-focusring {*/
+        /*    outline: 1px solid white;*/
+        /*    outline-offset: -1px;*/
+        /*}*/
+        /*#time,#vol::-ms-track {*/
+        /*    width: 300px;*/
+        /*    height: 5px;*/
+        /*    background: transparent;*/
+        /*    border-color: transparent;*/
+        /*    border-width: 6px 0;*/
+        /*    color: transparent;*/
+        /*}*/
+        /*#time,#vol::-ms-fill-lower {*/
+        /*    background: #777;*/
+        /*    border-radius: 10px;*/
+        /*}*/
+        /*#time,#vol::-ms-fill-upper {*/
+        /*    background: #ddd;*/
+        /*    border-radius: 10px;*/
+        /*}*/
+        /*#time,#vol::-ms-thumb {*/
+        /*    border: none;*/
+        /*    height: 16px;*/
+        /*    width: 16px;*/
+        /*    border-radius: 50%;*/
+        /*    background: goldenrod;*/
+        /*}*/
+        /*#time,#vol:focus::-ms-fill-lower {*/
+        /*    background: #888;*/
+        /*}*/
+        /*#time,#vol:focus::-ms-fill-upper {*/
+        /*    background: #ccc;*/
+        /*}*/
         fieldset {
             margin: auto;
             left: 0;
@@ -199,18 +281,18 @@
             right: 280px;
             top: 10px;
         }
-        #img_like, #img_comment{
-            position: inherit;
-            top:50px
+        #song_img, #song_name, #img_like, #img_comment{
+            margin-top: 15px;
         }
+
 
     </style>
 
     <style>
         img{display: block;max-width:100%;}
         #song_img{
-            width:40px;
-            margin: 0 auto;
+            width:50px;
+            margin: 10px auto;
             border-radius: 50%;
             overflow: hidden;
             border: 1px solid #ccc;
@@ -252,11 +334,11 @@
     <div class="song_info">
         <div class="row">
             <div class="col-2">
-                <img id="song_img" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/user_06.jpg?alt=media&token=19969882-073f-4f33-bb48-a9fd086c6e2f" width="40px">
+                <img id="song_img" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/user_06.jpg?alt=media&token=19969882-073f-4f33-bb48-a9fd086c6e2f" width="60px">
             </div>
-            <div class="col-6" id="song_name">Song_name jzshlajcfbahjsbv</div>
-            <div class="col-2" id="img_like"><img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_04_unlike.png?alt=media&token=69f682e4-f421-4e51-af78-f74cbe0a3a18" style="width: 20px"></div>
-            <div class="col-2" id="img_comment"><img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_03_comment.png?alt=media&token=bba6c830-7a8a-406d-a134-47b963510875" style="width: 20px"></div>
+            <div class="col-6" id="song_name">Chắc ai đó sẽ cần</div>
+            <div class="col-2" id="img_like"><img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_04_unlike.png?alt=media&token=69f682e4-f421-4e51-af78-f74cbe0a3a18" width="20px"></div>
+            <div class="col-2" id="img_comment"><img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_03_comment.png?alt=media&token=bba6c830-7a8a-406d-a134-47b963510875" width="20px"></div>
         </div>
         <span></span>
     </div>
@@ -269,19 +351,12 @@
     </div>
     <div class="time_slider">
         <span class="runing_time">0:00</span>
-        <input type="range" value="0">
+        <input id="time" type="range" value="0">
         <span class="song_long">0:00</span>
     </div>
     <div class="volume_slider">
-
             <img id="img_volume" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_07_volume.png?alt=media&token=bedfe6b8-6907-4024-ac1e-7a5bea0fb9c8" width="20px">
             <input id="vol" type="range" min="0" max="100" step="1" value="50">
-
-
-
-
-
-        
     </div>
 </div>
 
@@ -297,7 +372,7 @@
         updateCurrentTime();
     });
 
-    $('body').on('click','input[type=range]',function(){
+    $('body').on('click','#time',function(){
         audio.pause();
         audio.currentTime = audioTotalTime * $(this).val();
         audio.play();
@@ -313,6 +388,10 @@
         $('.song_list').slideToggle();
     });
 
+    vol.onchange = function(){
+        audio.volume = vol.value/100;
+    }
+
     function updateCurrentTime(){
         setInterval(function(){
             var time = audio.currentTime;
@@ -321,7 +400,7 @@
             seconds = (seconds - (minutes * 60 )) < 10 ? ('0' + (seconds - (minutes * 60 ))) : (seconds - (minutes * 60 ));
             var currentTime = minutes + ':' + seconds;
             $('.runing_time').text(currentTime);
-            $("input[type=range]").val(time/audioTotalTime )
+            $("#time").val(time/audioTotalTime )
         },1000)
 
     }

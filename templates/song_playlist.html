@@ -28,9 +28,13 @@
     <script src="../static/js/user_view_edit.js"></script>
     <script src="../static/js/playlist.js"></script>
     <style>
-        img{display: block;max-width:100%;}
-        .dia-cd{
-            width:300px;
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .dia-cd {
+            width: 300px;
             margin: 0 auto;
             border-radius: 50%;
             overflow: hidden;
@@ -41,30 +45,308 @@
             -o-animation: xoayvong 20s linear 0s infinite;
         }
 
-        @-webkit-keyframes xoayvong{
-            from{
-                -webkit-transform:rotate(0deg);
-                -moz-transform:rotate(0deg);
-                -o-transform:rotate(0deg);
+        @-webkit-keyframes xoayvong {
+            from {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
             }
-            to{
-                -webkit-transform:rotate(360deg);
-                -moz-transform:rotate(360deg);
-                -o-transform:rotate(360deg);
+            to {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
             }
         }
+
         /* Standard syntax */
         @keyframes xoayvong {
-            from{
-                -webkit-transform:rotate(0deg);
-                -moz-transform:rotate(0deg);
-                -o-transform:rotate(0deg);
+            from {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
             }
-            to{
-                -webkit-transform:rotate(360deg);
-                -moz-transform:rotate(360deg);
-                -o-transform:rotate(360deg);
+            to {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
             }
+        }
+    </style>
+    <style>
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        #song_img {
+            width: 50px;
+            margin: 10px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            animation: xoayvong 20s linear 0s infinite;
+            -webkit-animation: xoayvong 20s linear 0s infinite;
+            -moz-animation: xoayvong 20s linear 0s infinite;
+            -o-animation: xoayvong 20s linear 0s infinite;
+        }
+
+        @-webkit-keyframes xoayvong {
+            from {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+            }
+        }
+
+        /* Standard syntax */
+        @keyframes xoayvong {
+            from {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+            }
+        }
+    </style>
+    <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css);
+
+        body {
+            font-family: 'Josefin Sans', sans-serif !important;
+            margin: 5rem 0 5rem 0;
+            font-family: tahoma;
+        }
+
+        body #music_player {
+
+            margin: 0 auto;
+            background: #402457;
+            height: 4rem;
+            width: 70rem;
+            -webkit-box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 7px 20px -6px rgba(0, 0, 0, 0.75);
+            box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.75);
+        }
+
+        .artist_img img {
+            height: 200px;
+        }
+
+        body #music_player .volume_slider {
+            background: #301643;
+            height: 4rem;
+            width: 22rem;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        body #music_player .time_slider span {
+            position: absolute;
+            /*top: 2rem;*/
+            bottom: 2rem;
+            right: 2rem;
+        }
+
+        body #music_player .time_slider {
+            background: #260f39;
+            height: 2rem;
+            width: 25rem;
+            position: absolute;
+            bottom: 0;
+            right: 22rem;
+        }
+
+        body #music_player .time_slider span {
+            position: absolute;
+            font-size: 12px;
+            top: 0.75rem;
+        }
+
+        body #music_player .time_slider .runing_time {
+            left: 1rem;
+            color: #fecf7d;
+        }
+
+        body #music_player .time_slider .song_long {
+            right: 1rem;
+            color: #775b8e;
+        }
+
+        body #music_player .controllers {
+            background: #260f39;
+            height: 2rem;
+            width: 25rem;
+            position: absolute;
+            right: 22rem;
+            bottom: 2rem;
+            font-family: FontAwesome;
+            text-align: center;
+            color: #83649f;
+        }
+
+        body #music_player .controllers i {
+            position: relative;
+            bottom: -0.7rem;
+            padding: 0 15px 0 15px;
+        }
+
+        body #music_player .song_info {
+            background: #301643;
+            height: 4rem;
+            width: 23rem;
+            position: absolute;
+            left: 0rem;
+            bottom: 0;
+            font-family: FontAwesome;
+            text-align: center;
+            color: #83649f;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            border: 1px solid white;
+            border-radius: 2px;
+            width: 12rem;
+            top: 1rem;
+            left: 0;
+            right: 0;
+            margin: auto;
+            position: absolute;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 300px;
+            height: 5px;
+            background: #8664a1;
+            border: none;
+            border-radius: 3px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 3px solid #fff;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #9200ff;
+            margin-top: -4px;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #8664a1;
+        }
+
+        input[type=range]::-moz-range-track {
+            width: 300px;
+            height: 5px;
+            background: #8664a1;
+            border: none;
+            border-radius: 3px;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            -webkit-appearance: none;
+            border: 3px solid #fff;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #9200ff;
+            margin-top: -4px;
+        }
+
+        input[type=range]:-moz-focusring {
+            outline: 1px solid white;
+            outline-offset: -1px;
+        }
+
+        input[type=range]::-ms-track {
+            width: 300px;
+            height: 5px;
+            background: transparent;
+            border-color: transparent;
+            border-width: 6px 0;
+            color: transparent;
+        }
+
+        input[type=range]::-ms-fill-lower {
+            background: #777;
+            border-radius: 10px;
+        }
+
+        input[type=range]::-ms-fill-upper {
+            background: #ddd;
+            border-radius: 10px;
+        }
+
+        input[type=range]::-ms-thumb {
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: goldenrod;
+        }
+
+        input[type=range]:focus::-ms-fill-lower {
+            background: #888;
+        }
+
+        input[type=range]:focus::-ms-fill-upper {
+            background: #ccc;
+        }
+
+        fieldset {
+            margin: auto;
+            left: 0;
+            right: 0;
+            position: absolute;
+            width: 9rem;
+        }
+
+        i {
+            cursor: pointer;
+        }
+
+        i:hover {
+            color: #fec35e;
+        }
+
+        #img_volume {
+            position: inherit;
+            display: block;
+            max-width: 20%;
+            right: 280px;
+            margin-top: 25px;
+        }
+
+        #vol {
+            position: inherit;
+            margin-top: 13px;
+        }
+
+        #song_img, #song_name, #img_like, #img_comment {
+            margin-top: 15px;
+        }
+
+
+    </style>
+    <style>
+        #artist_name:hover {
+            text-underline: orangered;
+            color: #fec35e;
         }
     </style>
 
@@ -77,11 +359,14 @@
         <div id="layout_mainPlaylist" class="col-3">
             <div class="row">
                 <div class="card" style="width: 18rem;">
-                    <img class="dia-cd" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/playlist_img_01.jpg?alt=media&token=0ee5cb83-540f-4566-abce-1f2409384178" class="card-img-top" width="300px">
+                    <img class="dia-cd"
+                         src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/playlist_img_01.jpg?alt=media&token=0ee5cb83-540f-4566-abce-1f2409384178"
+                         class="card-img-top" width="300px">
                     <div class="card-body">
                         <h5 class="card-title">Playlist name</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a class="btn btn-primary">Go somewhere</a>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <i class="fa fa-play" id="btn_play_1" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -90,17 +375,13 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Bài hát</th>
-                    <th scope="col">Thời gian</th>
-                    <th scope="col" colspan="2">Mặc định</th>
+                    <th scope="col" colspan="2">Bài hát</th>
+
+                    <th scope="col" colspan="3">Mặc định</th>
                 </tr>
                 </thead>
                 <tbody id="list_song">
-                <tr>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
+
                 </tbody>
             </table>
         </div>
@@ -108,39 +389,155 @@
     </div>
     <div id="layout_footer"></div>
 </div>
-
+<div class=" fixed-bottom" id="music_player">
+    <div class="song_info">
+        <div class="row">
+            <div class="col-2">
+                <img id="song_img"
+                     src=""
+                     width="60px">
+            </div>
+            <div class="col-6" id="song_name"></div>
+            <div class="col-2" id="img_like"><img
+                    src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_04_unlike.png?alt=media&token=69f682e4-f421-4e51-af78-f74cbe0a3a18"
+                    width="20px"></div>
+            <div class="col-2" id="img_comment"><img
+                    src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_03_comment.png?alt=media&token=bba6c830-7a8a-406d-a134-47b963510875"
+                    width="20px"></div>
+        </div>
+        <span></span>
+    </div>
+    <div class="controllers">
+        <i class="fa fa-music" aria-hidden="true"></i>
+        <i class="fa fa-fast-backward" aria-hidden="true"></i>
+        <i class="fa fa-play" id="btn_play_2" aria-hidden="true"></i>
+        <i class="fa fa-fast-forward" aria-hidden="true"></i>
+        <i class="fa fa-retweet" aria-hidden="true"></i>
+    </div>
+    <div class="time_slider">
+        <span class="runing_time">0:00</span>
+        <input id="time" type="range" value="0">
+        <span class="song_long">0:00</span>
+    </div>
+    <div class="volume_slider">
+        <img id="img_volume"
+             src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_07_volume.png?alt=media&token=bedfe6b8-6907-4024-ac1e-7a5bea0fb9c8"
+             width="20px">
+        <input id="vol" type="range" min="0" max="100" step="1" value="50">
+    </div>
+</div>
 <script>
     function getAllSong() {
-
         let content = "";
         $.ajax({
             type: "GET",
             url: "http://localhost:8080/api/songs",
             success: function (data) {
-
                 for (let i = 0; i < data.length; i++) {
-                    content+=`<tr>
-                    <td>${data[i].name}</td>
-                    <td>Otto</td>
+
+                    content += `<tr>
+                    <td><img src="${data[i].img}" width="20px"></td>
+                    <td>
+                    <div><a onclick="playMusic('${data[i].id}')" style="text-decoration: none;font-size: 15px">${data[i].name}</a></div>
+                    <div><a onclick="" style="text-decoration: none;font-size: 10px" id="artist_name">${data[i].artist.name}</a></div>
+                    </td>
                     <td>
                     <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_03_comment.png?alt=media&token=bba6c830-7a8a-406d-a134-47b963510875" width="20px">
                     </td>
                     <td>
                     <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_04_unlike.png?alt=media&token=69f682e4-f421-4e51-af78-f74cbe0a3a18" width="20px">
-
                     </td>
-                    <td>...</td>
+                    <td><div class="dropdown">
+                    <button class="btn dropdown-toggle btn-sm btn-success" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        ...
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+</div>
+                    </td>
                 </tr>`;
-                    console.log(data[i].mp3)
-                    let audio=new Audio(data[i].mp3);
-                    console.log(audio)
                 }
-                document.getElementById("list_song").innerHTML=content;
+                document.getElementById("list_song").innerHTML = content;
             }
         })
-        $("#list_song")
+    }
+</script>
+<script>
+    let audio = new Audio('');
+
+    function stopMusic(songId) {
+
     }
 
+    function playMusic(songId) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/api/songs/" + songId,
+            success: function (song) {
+                localStorage.setItem("currentSong", JSON.stringify(song))
+            },
+            error: function (e) {
+                console.log("error: " + e)
+            }
+        })
+
+        setTimeout(() => {
+            audio.pause();
+            let currentSong = JSON.parse(localStorage.getItem("currentSong"));
+
+            $("#song_img").attr("src", currentSong.img);
+            $("#song_name").text(currentSong.name);
+
+            audio = new Audio(currentSong.mp3);
+            audio.play();
+
+        }, 1000)
+
+        $('body').on('click', '.fa-play', function (e) {
+            audio.play();
+            audioTotalTime = audio.duration / 60;
+            $(this).addClass('fa-pause')
+            $(this).removeClass('fa-play');
+            $('.song_long').text(Math.round(audioTotalTime * 100) / 100);
+            updateCurrentTime();
+        });
+
+        $('body').on('click', '#time', function () {
+            audio.pause();
+            audio.currentTime = audioTotalTime * $(this).val();
+            audio.play();
+        });
+
+        $('body').on('click', '.fa-pause', function () {
+            audio.pause();
+            $(this).addClass('fa-play')
+            $(this).removeClass('fa-pause');
+        });
+
+        $('body').on('click', '.fa-music', function () {
+            $('.song_list').slideToggle();
+        });
+        vol.onchange = function () {
+            audio.volume = vol.value / 100;
+        }
+
+        function updateCurrentTime() {
+            setInterval(function () {
+                var time = audio.currentTime;
+                var minutes = Math.floor(time / 60);
+                var seconds = Math.floor(time);
+                seconds = (seconds - (minutes * 60)) < 10 ? ('0' + (seconds - (minutes * 60))) : (seconds - (minutes * 60));
+                var currentTime = minutes + ':' + seconds;
+                $('.runing_time').text(currentTime);
+                $("#time").val(time / audioTotalTime)
+            }, 1000)
+        }
+
+
+    }
 </script>
 </body>
 </html>
