@@ -4,18 +4,71 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        /*body {*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*    background: #00B5EA;*/
+        /*}*/
+        .box {
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #2f3640;
+            border-radius: 50px;
+            padding: 10px;
+        }
+
+        .sbutton {
+            color: #e84118;
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #DADADA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+        .stext {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: #555;
+            font-size: 15px;
+            transition: 0.4s;
+            line-height: 40px;
+            width: 0px;
+        }
+        .sbox:hover > .stext {
+            width: 200px;
+            padding: 0 5px;
+            border-radius: 50px;
+        }
+        .sbox:hover > .sbutton {
+            background: #fff;
+        }
+
+        .fa-search {
+            color: #001EFF;
+        }
+    </style>
 </head>
 <body>
-
-<audio controls autoplay>
-    <source src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/song_sai%20gon%20dau%20long%20qua.mp3?alt=media&token=b2f4391b-0db4-463b-9e19-29e7f7cfa817">
-</audio>
-
-<script>
-
-    let url="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/song_sai%20gon%20dau%20long%20qua.mp3?alt=media&token=b2f4391b-0db4-463b-9e19-29e7f7cfa817"
-    let au=new Audio("url");
-
-</script>
+<div class="box">
+    <form class="sbox" action="/search" method="get">
+        <input class="stext" type="text" name="q" placeholder="Tìm kiếm bài viết...">
+        <a class="sbutton" type="submit" href="">
+            <i class="fa fa-search"></i>
+        </a>
+    </form>
+</div>
 </body>
 </html>
