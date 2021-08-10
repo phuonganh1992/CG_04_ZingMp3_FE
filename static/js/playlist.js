@@ -40,6 +40,7 @@ function getListPlaylist(data) {
                 </tr>
                 `
 }
+
 // ajax tìm kiếm
 function search() {
     let searchKey = $("#searchKey").val();
@@ -66,6 +67,7 @@ function search() {
         error: showList
     })
 }
+
 function createPlaylist() {
     let name = $('#modalCreate__name').val();
     let description = $('#modalCreate__description').val();
@@ -73,9 +75,9 @@ function createPlaylist() {
     let user = $('#modalCreate__user').val();
     let newPlaylist = {
         name: name,
-        description:description,
+        description: description,
         img: img,
-        user:{
+        user: {
             id: user
         }
 
@@ -83,16 +85,17 @@ function createPlaylist() {
     $.ajax({
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        type:"POST",
-        url:"http://localhost:8080/playlists",
-        data:JSON.stringify(newPlaylist),
-        success: function (){
+        type: "POST",
+        url: "http://localhost:8080/playlists",
+        data: JSON.stringify(newPlaylist),
+        success: function () {
             showList();
             resetForm()
         }
     })
     event.preventDefault();
 }
+
 function getUserPlaylist() {
     console.log(1)
     $.ajax({
@@ -116,24 +119,26 @@ function getUserPlaylist() {
 
     })
 }
-function resetForm(){
-    document.getElementById('modalCreate__name').value=""
-    document.getElementById('modalCreate__description').value=""
-    document.getElementById('modalCreate__img').value=""
-    document.getElementById('modalCreate__user').value="1"
+
+function resetForm() {
+    document.getElementById('modalCreate__name').value = ""
+    document.getElementById('modalCreate__description').value = ""
+    document.getElementById('modalCreate__img').value = ""
+    document.getElementById('modalCreate__user').value = "1"
 }
-function editPlaylist(id){
+
+function editPlaylist(id) {
     $.ajax({
-        type:"GET",
-        url:"http://localhost:8080/playlists/" +id,
-        success: function (data){
+        type: "GET",
+        url: "http://localhost:8080/playlists/" + id,
+        success: function (data) {
 
             $('#modalEdit__id').val(data.id);
             $('#modalEdit__name').val(data.name);
             $('#modalEdit__description').val(data.description);
             $('#modalEdit__user').val(data.user.id);
             $('#modalEdit__img').val(data.img);
-            $('#updateButton').click(function (event){
+            $('#updateButton').click(function (event) {
                 let id = $('#modalEdit__id').val();
                 let name = $('#modalEdit__name').val();
                 let description = $('#modalEdit__description').val();
@@ -142,18 +147,18 @@ function editPlaylist(id){
                 let newPlaylist = {
                     id: id,
                     name: name,
-                    description:description,
+                    description: description,
                     img: img,
-                    user:{
+                    user: {
                         id: user
                     }
                 }
                 $.ajax({
-                    type:"PUT",
-                    url:"http://localhost:8080/playlists/" +id,
+                    type: "PUT",
+                    url: "http://localhost:8080/playlists/" + id,
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    data:JSON.stringify(newPlaylist),
+                    data: JSON.stringify(newPlaylist),
                     success: showList
                 })
                 event.preventDefault();
@@ -162,17 +167,19 @@ function editPlaylist(id){
         }
     })
 }
-function deletePLaylist(id){
+
+function deletePLaylist(id) {
     $.ajax({
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        type:"DELETE",
-        url:"http://localhost:8080/playlists/" +id,
+        type: "DELETE",
+        url: "http://localhost:8080/playlists/" + id,
         error: showList
     })
     event.preventDefault()
 }
-function loadModalPlaylist(){
+
+function loadModalPlaylist() {
     let content = `
 <!--Modal create-->
 <div class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -255,5 +262,74 @@ function loadModalPlaylist(){
 </div>`;
     $("#modalPlaylist").html(content);
 }
+
+function loadCardPlaylist() {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/playlists",
+        success: function (data) {
+            let content = ``
+            for (let i = 0; i < data.length; i++) {
+                content += getCardPlaylist(data[i])
+
+            }
+            document.getElementById('layout_playlist').innerHTML = content;
+        }
+
+    })
+
+}
+
+function getCardPlaylist(data) {
+    return `   
+                    <div class="col-6 mt-3">                 
+                    <div class="card">
+                        <a  class="btn" onclick="getPlaylistById(${data.id})">
+                            <img class="card-img-top" style="width: 100%;height: 300px" src="${data.img}" alt="Card image cap">
+                            <div class="card-body">
+                                  <h5 class="card-title">${data.name}</h5>
+                                  <p class="card-text">${data.description}</p>
+                            </div>
+                         </a>
+                    </div>
+                    </div>  
+               `
+}
+function getPlaylistById(id){
+    $.ajax({
+        type:"GET",
+        url:"http://localhost:8080/playlists/"+id,
+        success:function (data){
+            let songs = data.songs
+            let content = `<h3>Danh sách bài hát</h3>
+                          <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">STT</th>
+                              <th scope="col">Tên</th>
+                            </tr>
+                          </thead>`
+
+            for (let i = 0; i < songs.length; i++) {
+
+                content += getSongs(songs[i])
+
+            }
+            document.getElementById('layout_viewSongs').innerHTML= content;
+
+        }
+    })
+}
+function getSongs(data){
+    return ` <tbody>
+    <tr>
+      <th scope="row">${data.id}</th>
+      <td>${data.name}</td>
+    </tr>
+  </tbody>
+    `
+}
+
+
 
 
