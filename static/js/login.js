@@ -270,5 +270,5 @@ function logout() {
 }
 
 function viewUser(){
-    window.location.href="user/view.html";
+    window.location.href="user/demo.html";
 }
