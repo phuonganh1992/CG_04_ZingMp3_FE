@@ -233,7 +233,7 @@ function hasUserLogin() {
                                 <li><a class="dropdown-item" onclick="redirectView()">Trang cá nhân</a></li>
                                 <li><a class="dropdown-item" href="#">Nhạc của tui</a></li>
                                 <li><a class="dropdown-item" onclick="redirectListUser()">Quản lý user</a></li>
-                                <li><a class="dropdown-item" href="#">Quản lý ca sĩ</a></li>
+                                <li><a class="dropdown-item" onclick="redirectListArtist()">Quản lý ca sĩ</a></li>
                                 <li><a class="dropdown-item" href="#">Quản lý bài hát</a></li>
                                 <li><a class="dropdown-item" onclick="redirectPlaylist()" >Quản lý playlist</a></li>
                                 <li><a class="dropdown-item" href="#">Lịch sử</a></li>

@@ -20,3 +20,6 @@ function redirectPlaylist(){
 function redirectHome(){
     window.location.href="http://localhost:63343/ZingMp3_FE/templates/zing_home.html"
 }
+function redirectListArtist(){
+    window.location.href="http://localhost:63343/ZingMp3_FE/templates/artist_list.html"
+}
