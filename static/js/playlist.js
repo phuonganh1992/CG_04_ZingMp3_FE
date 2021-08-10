@@ -271,9 +271,11 @@ function loadCardPlaylist() {
             let content = ``
             for (let i = 0; i < data.length; i++) {
                 content += getCardPlaylist(data[i])
+
             }
             document.getElementById('layout_playlist').innerHTML = content;
         }
+
     })
 
 }
@@ -282,7 +284,7 @@ function getCardPlaylist(data) {
     return `   
                     <div class="col-6 mt-3">                 
                     <div class="card">
-                        <a  class="btn">
+                        <a  class="btn" onclick="getPlaylistById(${data.id})">
                             <img class="card-img-top" style="width: 100%;height: 300px" src="${data.img}" alt="Card image cap">
                             <div class="card-body">
                                   <h5 class="card-title">${data.name}</h5>
@@ -293,27 +295,41 @@ function getCardPlaylist(data) {
                     </div>  
                `
 }
-function viewPlaylist(){
+function getPlaylistById(id){
     $.ajax({
         type:"GET",
-        url:"http://localhost:8080/playlists",
-        success: function (data){
-            console.log(data);
-            let content = ``
-            for (let i = 0; i < data.length; i++) {
-                content += getSongFromPlaylist(data[i])
+        url:"http://localhost:8080/playlists/"+id,
+        success:function (data){
+            let songs = data.songs
+            let content = `<h3>Danh sách bài hát</h3>
+                          <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">STT</th>
+                              <th scope="col">Tên</th>
+                            </tr>
+                          </thead>`
+
+            for (let i = 0; i < songs.length; i++) {
+
+                content += getSongs(songs[i])
 
             }
-            document.getElementById('layout_viewPLaylist').innerHTML = content;
+            document.getElementById('layout_viewSongs').innerHTML= content;
 
         }
     })
 }
-function getSongFromPlaylist(data){
-    return `<ul class="list-group">
-                 <li class="list-group-item">${data.name}</li>
-                 <li class="list-group-item">${data.id}</li>
-            </ul>`
+function getSongs(data){
+    return ` <tbody>
+    <tr>
+      <th scope="row">${data.id}</th>
+      <td>${data.name}</td>
+    </tr>
+  </tbody>
+    `
 }
+
+
 
 
