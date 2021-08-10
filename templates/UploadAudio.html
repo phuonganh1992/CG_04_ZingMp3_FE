@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="../static/js/redirect.js"></script>
 </head>
 <body>
 <div id="main"></div>
@@ -49,11 +50,8 @@
             .then(url => {
                 console.log(url);
                 alert("Audio upload successful");
-
                 document.getElementById('main').innerHTML = `<audio controls preload="none"> <source src="${url}"> </audio>`
-
             })
-
     }
 </script>
 </html>
