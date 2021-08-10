@@ -166,5 +166,7 @@ body.showLoginForm .popup {
 
 #btn_signup:hover {
     text-decoration: blue;
-
+}
+h1{
+    color: #00dbde;
 }

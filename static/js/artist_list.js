@@ -8,7 +8,7 @@ function getAllArtist() {
         url: "http://localhost:8080/api/artists",
         success: function (data) {
             console.log(data)
-            let str = `<button onclick="create()" margin-right >Add</button>
+            let str = `<button onclick="create()"  >Add</button>
 
 <table class="table table-striped">
 <div id="create_artist"></div>
@@ -85,12 +85,53 @@ function showEditArtist(id){
             'Content-Type': 'application/json'
         },
         type: "GET",
-        url: "http://localhost:8080/api/artists"+id,
+        url: "http://localhost:8080/api/artists/"+id,
         success: function (data){
+            document.getElementById("img_Artist").innerHTML = '<input type="text" placeholder="image" id="image" value="' + data.image + '">\n'
+             document.getElementById("showEditArtist").innerHTML=   '<center>    <input type="text" placeholder="name" id="name" value="' + data.name + '"></center>\n' +
+                ' <center>   <input type="text" placeholder="description" id="description" value="' + data.description + '"></center>\n' +
+                ' <center>  <button onclick="saveEditArtist(' + data.id + ')">Save</button></center> '
         }
 
     });
-    document.getElementById("showEditArtist").innerHTML='<input type="text" value="${data.image}">'
 }
-
-
+function saveEditArtist(id){
+    let image=document.getElementById("image").value;
+    let name=document.getElementById("name").value;
+    let description=document.getElementById("description").value;
+    let data={
+        "image":image,
+        "name":name,
+        "description":description
+    }
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "PUT",
+        url: "http://localhost:8080/api/artists/"+id,
+        data: JSON.stringify(data),
+        success: getAllArtist,
+        error: function error(){
+            // console.log(error);
+        }
+    });
+}
+// function searchNameArtist(name){
+//     $.ajax({
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         },
+//         type: "GET",
+//         url: "http://localhost:8080/api/artists/search/"+id,
+//         success: function (data){
+//             document.getElementById("img_Artist").innerHTML = '<input type="text" placeholder="image" id="image" value="' + data.image + '">\n'
+//             document.getElementById("showEditArtist").innerHTML=   '<center>    <input type="text" placeholder="name" id="name" value="' + data.name + '"></center>\n' +
+//                 ' <center>   <input type="text" placeholder="description" id="description" value="' + data.description + '"></center>\n' +
+//                 ' <center>  <button onclick="saveEditArtist(' + data.id + ')">Save</button></center> '
+//         }
+//
+//     });
+// }
