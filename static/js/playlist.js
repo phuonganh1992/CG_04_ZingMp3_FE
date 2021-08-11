@@ -4,7 +4,7 @@ function showList() {
         type: "GET",
         url: "http://localhost:8080/playlists",
         success: function (data) {
-            let content = `<table class="table table-striped">
+            let content = `<table class="table table-striped table-hover">
         <thead>
         <tr>
             <th scope="col">Id</th>
@@ -99,7 +99,6 @@ function createPlaylist() {
 }
 
 function getUserPlaylist() {
-    console.log(1)
     $.ajax({
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -127,6 +126,7 @@ function resetForm() {
     document.getElementById('modalCreate__description').value = ""
     document.getElementById('modalCreate__img').value = ""
     document.getElementById('modalCreate__user').value = "1"
+    document.getElementById('main').value = ""
 }
 
 function editPlaylist(id) {
@@ -211,6 +211,11 @@ function loadModalPlaylist() {
                 <div class="mb-3">
                     <label class="form-label">Img</label>
                     <input type="text" class="form-control" id="modalCreate__img">
+                </div>
+                <div id="main">
+                     <input type="file" id="photo">
+                     <button onclick="uploadImagePlaylist()">Upload Image</button>
+                     <img id="image" src="" alt="">
                 </div>
             </div>
             <div class="modal-footer">
@@ -297,6 +302,7 @@ function getCardPlaylist(data) {
                     </div>  
                `
 }
+
 function getPlaylistById(id){
     $.ajax({
         type:"GET",
@@ -330,6 +336,24 @@ function getSongs(data){
     `
 }
 
+function uploadImagePlaylist(){
+    const  ref=firebase.storage().ref();
+    const file=document.querySelector("#photo").files[0];
+    const name=file.name;
+    const metadata={
+        contentType:file.type
+    }
+    const task=ref.child(name).put(file,metadata);
+
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            alert("Image upload successful");
+            document.getElementById('main').innerHTML = `<img src="${url}" alt="" height="100px" width="100px"> </<img>`
+            document.getElementById('modalCreate__img').value = `${url}`
+
+        })
+}
 
 
 
