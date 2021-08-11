@@ -1,4 +1,5 @@
 function loadLayoutMenu(){
+    console.log("load layout menu")
     let content=`<div class="row fixed-top" id="layout_menu">
         <nav class="navbar navbar-expand-lg navbar-light"
              style="background: url('https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/background_6.png?alt=media&token=a247cf31-31de-40f8-af17-20dc6e476a95')">
@@ -151,6 +152,7 @@ function loadLayoutMenu(){
 }
 
 function loadLayoutLogin(){
+    console.log("load layout login")
     let content=`<div class="row mt-3" id="layout_login">
         <div class="popup-overlay"></div>
         <div class="popup">
