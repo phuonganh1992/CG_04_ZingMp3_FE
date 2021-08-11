@@ -18,5 +18,5 @@ function redirectPlaylist(){
     window.location.href="playlist_list.html"
 }
 function redirectHome(){
-    window.location.href="zing_home.html"
+    window.location.href="zing_layout.html"
 }

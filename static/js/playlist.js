@@ -32,7 +32,7 @@ function getListPlaylist(data) {
                       <td><img src="${data.img}" width="50px" height="50px"></td>
                       <td>${data.user.username}</td>
                       <td>
-                 <button style="margin-right: 20px" onclick="editPlaylist(${data.id})" "type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalEdit">
+                 <button style="margin-right: 20px" onclick="editPlaylist(${data.id})" type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalEdit">
                     Edit
                 </button>
                 <button style=" margin-left: 20px" onclick="deletePLaylist(${data.id})"  type="button" class="btn btn-danger" >
@@ -303,11 +303,10 @@ function getPlaylistById(id){
         url:"http://localhost:8080/playlists/"+id,
         success:function (data){
             let songs = data.songs
-            let content = `<h3>Danh sách bài hát</h3>
+            let content = `<h3>${data.name}</h3>
                           <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th scope="col">STT</th>
                               <th scope="col">Tên</th>
                             </tr>
                           </thead>`
@@ -325,7 +324,6 @@ function getPlaylistById(id){
 function getSongs(data){
     return ` <tbody>
     <tr>
-      <th scope="row">${data.id}</th>
       <td>${data.name}</td>
     </tr>
   </tbody>

@@ -9,57 +9,25 @@ function loadLayoutMenu(){
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                       <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#layout_viewSongs" id="navbarDropdown1" role="button"  aria-expanded="false">
                                 Bài hát
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Việt Nam</a></li>
-                                <li><a class="dropdown-item" href="#">Âu Mỹ</a></li>
-                                <li><a class="dropdown-item" href="#">Châu Á</a></li>
-                                <li><a class="dropdown-item" href="#">Khác</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#layout_playlist" id="navbarDropdown2" role="button"  aria-expanded="false">
                                 Playlist
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Việt Nam</a></li>
-                                <li><a class="dropdown-item" href="#">Âu Mỹ</a></li>
-                                <li><a class="dropdown-item" href="#">Châu Á</a></li>
-                                <li><a class="dropdown-item" href="#">Khác</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"  aria-expanded="false">
                                 BXH
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Việt Nam</a></li>
-                                <li><a class="dropdown-item" href="#">Âu Mỹ</a></li>
-                                <li><a class="dropdown-item" href="#">Châu Á</a></li>
-                                <li><a class="dropdown-item" href="#">Khác</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"  aria-expanded="false">
                                 Chủ đề
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Việt Nam</a></li>
-                                <li><a class="dropdown-item" href="#">Âu Mỹ</a></li>
-                                <li><a class="dropdown-item" href="#">Châu Á</a></li>
-                                <li><a class="dropdown-item" href="#">Khác</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
