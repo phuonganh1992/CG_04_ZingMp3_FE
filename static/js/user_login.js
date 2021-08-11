@@ -7,21 +7,8 @@ function closeLoginForm() {
     document.body.classList.remove("showLoginForm");
 }
 
-$("#showPass1").click(function () {
-    let currentType = $("#password").attr("type");
-    $("#password").attr("type",
-        currentType === "password" ? "text" : "password");
-})
-$("#showPass2").click(function () {
-    let currentType = $("#password_regis").attr("type");
-    $("#password_regis").attr("type",
-        currentType === "password" ? "text" : "password");
-})
-$("#showPass3").click(function () {
-    let currentType = $("#re-password_regis").attr("type");
-    $("#re-password_regis").attr("type",
-        currentType === "password" ? "text" : "password");
-})
+
+
 
 function showRegisterForm() {
     let content=`<div class="form" id="formRegister">
@@ -37,10 +24,10 @@ function showRegisterForm() {
                     <tr>
                         <td width="60%">
                             <div class="element">
-                                <input type="text" id="username_regis" placeholder="username" required>
+                                <input type="text" id="username_regis" placeholder="Username" required>
                             </div>
                             <div class="element">
-                                <input type="password" id="password_regis" placeholder="password" required>
+                                <input type="password" id="password_regis" placeholder="Password" required>
                                 <button id="showPass2"
                                         style="width: 30px;height:10px;position: relative;background:none;top: -41px; left: 332px;">
                                     <img src="https://icons.iconarchive.com/icons/iconsmind/outline/128/Eye-2-icon.png"
@@ -48,7 +35,7 @@ function showRegisterForm() {
                                 
                             </div>
                             <div class="element">
-<input type="password" id="re-password_regis" placeholder="password" required>
+                                <input type="password" id="re-password_regis" placeholder="Confimed password" required>
                                 <button id="showPass3"
                                         style="width: 30px;height:10px;position: relative;background:none;top: -41px; left: 332px;">
                                     <img src="https://icons.iconarchive.com/icons/iconsmind/outline/128/Eye-2-icon.png"
@@ -88,6 +75,16 @@ function showRegisterForm() {
                 </table>
             </div>`;
     $("#formLoginRegister").html(content);
+    $("#showPass2").click(function () {
+        let currentType = $("#password_regis").attr("type");
+        $("#password_regis").attr("type",
+            currentType === "password" ? "text" : "password");
+    })
+    $("#showPass3").click(function () {
+        let currentType = $("#re-password_regis").attr("type");
+        $("#re-password_regis").attr("type",
+            currentType === "password" ? "text" : "password");
+    })
 }
 
 function closeRegisterForm() {
@@ -105,10 +102,10 @@ function closeRegisterForm() {
                     <tr>
                         <td width="60%">
                             <div class="element">
-                                <input type="text" id="username" placeholder="username" required>
+                                <input type="text" id="username" placeholder="Username" required>
                             </div>
                             <div class="element">
-                                <input type="password" id="password" placeholder="password" required>
+                                <input type="password" id="password" placeholder="Password" required>
                                 <button id="showPass1"
                                         style="width: 30px;height:10px;position: relative;background:none;top: -41px; left: 332px;">
                                     <img src="https://icons.iconarchive.com/icons/iconsmind/outline/128/Eye-2-icon.png"
@@ -147,6 +144,11 @@ function closeRegisterForm() {
                 </table>
             </div>`;
     $("#formLoginRegister").html(content);
+    $("#showPass1").click(function () {
+        let currentType = $("#password").attr("type");
+        $("#password").attr("type",
+            currentType === "password" ? "text" : "password");
+    })
 }
 
 function login() {

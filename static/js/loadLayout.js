@@ -1,7 +1,6 @@
 function loadLayoutMenu(){
     let content=`<div class="row fixed-top" id="layout_menu">
-        <nav class="navbar navbar-expand-lg navbar-light"
-             style="background: url('https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/background_6.png?alt=media&token=a247cf31-31de-40f8-af17-20dc6e476a95')">
+        <nav class="navbar navbar-expand-lg navbar-light" id="menu_tab">
             <div class="container-fluid">
                 <a class="navbar-brand" onclick="redirectHome()"><img
                         src="https://icons.iconarchive.com/icons/amineworld/music-of-the-spheres/128/MP3-blue-icon.png"
@@ -13,10 +12,9 @@ function loadLayoutMenu(){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Bài hát
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -32,7 +30,7 @@ function loadLayoutMenu(){
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Playlist
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -48,7 +46,7 @@ function loadLayoutMenu(){
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 BXH
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -64,7 +62,7 @@ function loadLayoutMenu(){
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Chủ đề
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -80,7 +78,7 @@ function loadLayoutMenu(){
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Top 100
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -95,7 +93,7 @@ function loadLayoutMenu(){
                         <li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Chủ đề
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -110,7 +108,7 @@ function loadLayoutMenu(){
                         <li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown7" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 ...
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -138,7 +136,7 @@ function loadLayoutMenu(){
                         </li>
 
                         <li class="nav-item" id="btn_login_signup">
-                            <button class="btn btn-outline-info btn-info" type="submit" onclick="openLoginForm()">
+                            <button class="btn btn-outline-info btn-info" type="submit" onclick="openLoginForm()" style="color: white">
                                 Login/SignUp
                             </button>
                         </li>
