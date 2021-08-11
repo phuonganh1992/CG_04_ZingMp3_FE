@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--    <style>-->
+<!--        input[type=range] {-->
+<!--            -webkit-appearance: none;-->
+<!--            background-color: silver;-->
+<!--            width: 200px;-->
+<!--            height:20px;-->
+<!--        }-->
+<!--        input[type="range"]::-webkit-slider-thumb {-->
+<!--            -webkit-appearance: none;-->
+<!--            background-color: #666;-->
+<!--            opacity: 0.5;-->
+<!--            width: 10px;-->
+<!--            height: 20px;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+
+<audio id="video" poster="/poster.png" controls>
+    <source id="mp3" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/song_muon%20roi%20ma%20sao%20con.mp3?alt=media&token=9898493e-2542-4839-a0a8-39ba0c7dc643">
+
+</audio>
+
+    <button id="play">play</button>
+    <button id="pause">pause</button>
+    <button id="fullscreen">full screen</button>
+    <input id="vol" type="range" min="0" max="100" step="1" value="50">
+    <input type="range" id="timeline" min="0" max="100" step="1" value="0">
+    Current: <span id="currentTime">0</span> / <span id=“durationTime">0</span>
+
+<script>
+    let video = document.querySelector("#video");
+    let play = document.querySelector("#play");
+    let pause = document.querySelector("#pause");
+    let full = document.querySelector("#fullscreen");
+    let vol = document.querySelector("#vol");let timeline = document.querySelector("#timeline");
+    let curTime = document.querySelector("#currentTime");
+    let duraTime = document.querySelector("#durationTime");
+    let audio=new Audio("https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/song_muon%20roi%20ma%20sao%20con.mp3?alt=media&token=9898493e-2542-4839-a0a8-39ba0c7dc643")
+    let totalTime=0;
+    play.onclick = function(){
+        video.play();
+         let totalTime=audio.duration;
+        alert(totalTime)
+
+    }
+    pause.onclick = function(){
+        video.pause();
+    }
+
+    vol.onchange = function(){
+        video.volume = vol.value/100;
+    }
+
+</script>
+</body>
+</html>

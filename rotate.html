@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        img{display: block;max-width:100%;}
+        #fullpage{width:960px;margin: 50px auto;}
+        .dia-cd{
+            width:400px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            animation: xoayvong 20s linear 0s infinite;
+            -webkit-animation: xoayvong 20s linear 0s infinite;
+            -moz-animation: xoayvong 20s linear 0s infinite;
+            -o-animation: xoayvong 20s linear 0s infinite;
+        }
+
+        @-webkit-keyframes xoayvong{
+            from{
+                -webkit-transform:rotate(0deg);
+                -moz-transform:rotate(0deg);
+                -o-transform:rotate(0deg);
+            }
+            to{
+                -webkit-transform:rotate(360deg);
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+            }
+        }
+        /* Standard syntax */
+        @keyframes xoayvong {
+            from{
+                -webkit-transform:rotate(0deg);
+                -moz-transform:rotate(0deg);
+                -o-transform:rotate(0deg);
+            }
+            to{
+                -webkit-transform:rotate(360deg);
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<img class="dia-cd"
+     src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/playlist_img_01.jpg?alt=media&token=0ee5cb83-540f-4566-abce-1f2409384178"
+     className="card-img-top" width="300">
+
+
+<script>
+
+</script>
+</body>
+</html>

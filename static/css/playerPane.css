@@ -1,0 +1,222 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css);
+
+body {
+    font-family: 'Josefin Sans', sans-serif !important;
+    margin: 5rem 0 5rem 0;
+    font-family: tahoma;
+}
+
+body #music_player {
+
+    margin: 0 auto;
+    background: #402457;
+    height: 4rem;
+    width: 70rem;
+    -webkit-box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 7px 20px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.75);
+}
+
+.artist_img img {
+    height: 200px;
+}
+
+body #music_player .volume_slider {
+    background: #301643;
+    height: 4rem;
+    width: 22rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+body #music_player .time_slider span {
+    position: absolute;
+    /*top: 2rem;*/
+    bottom: 2rem;
+    right: 2rem;
+}
+
+body #music_player .time_slider {
+    background: #260f39;
+    height: 2rem;
+    width: 25rem;
+    position: absolute;
+    bottom: 0;
+    right: 22rem;
+}
+
+body #music_player .time_slider span {
+    position: absolute;
+    font-size: 12px;
+    top: 0.75rem;
+}
+
+body #music_player .time_slider .runing_time {
+    left: 1rem;
+    color: #fecf7d;
+}
+
+body #music_player .time_slider .song_long {
+    right: 1rem;
+    color: #775b8e;
+}
+
+body #music_player .controllers {
+    background: #260f39;
+    height: 2rem;
+    width: 25rem;
+    position: absolute;
+    right: 22rem;
+    bottom: 2rem;
+    font-family: FontAwesome;
+    text-align: center;
+    color: #83649f;
+}
+
+body #music_player .controllers i {
+    position: relative;
+    bottom: -0.7rem;
+    padding: 0 15px 0 15px;
+}
+
+body #music_player .song_info {
+    background: #301643;
+    height: 4rem;
+    width: 23rem;
+    position: absolute;
+    left: 0rem;
+    bottom: 0;
+    font-family: FontAwesome;
+    text-align: center;
+    color: #83649f;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    border: 1px solid white;
+    border-radius: 2px;
+    width: 12rem;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #8664a1;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 3px solid #fff;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #9200ff;
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #8664a1;
+}
+
+input[type=range]::-moz-range-track {
+    width: 300px;
+    height: 5px;
+    background: #8664a1;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    border: 3px solid #fff;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #9200ff;
+    margin-top: -4px;
+}
+
+input[type=range]:-moz-focusring {
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+    width: 300px;
+    height: 5px;
+    background: transparent;
+    border-color: transparent;
+    border-width: 6px 0;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
+
+fieldset {
+    margin: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 9rem;
+}
+
+i {
+    cursor: pointer;
+}
+
+i:hover {
+    color: #fec35e;
+}
+
+#img_volume {
+    position: inherit;
+    display: block;
+    max-width: 20%;
+    right: 280px;
+    margin-top: 25px;
+}
+
+#vol {
+    position: inherit;
+    margin-top: 13px;
+}
+
+#song_img, #song_name, #img_like, #img_comment {
+    margin-top: 15px;
+}

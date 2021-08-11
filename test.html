@@ -4,13 +4,67 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+
+        .box {
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background: #2f3640;
+            border-radius: 50px;
+            padding: 10px;
+        }
+
+        .sbutton {
+            color: #e84118;
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #DADADA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: 0.4s;
+        }
+        .stext {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: #555;
+            font-size: 15px;
+            transition: 0.4s;
+            line-height: 40px;
+            width: 0px;
+        }
+        .sbox:hover > .stext {
+            width: 200px;
+            padding: 0 5px;
+            border-radius: 50px;
+        }
+        .sbox:hover > .sbutton {
+            background: #fff;
+        }
+
+        .fa-search {
+            color: #001EFF;
+        }
+    </style>
 </head>
 <body>
-<img id="image" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/user_09.jpg?alt=media&token=d7a9df9b-d704-4157-af87-e2b37da206ce" alt="">
-
-<script>
-    let a= $("#image").attr("src");
-    console.log(a);
-</script>
+<div class="box">
+    <form class="sbox" action="/search" method="get">
+        <input class="stext" type="text" name="q" placeholder="Tìm kiếm bài viết...">
+        <a class="sbutton" type="submit" href="">
+            <i class="fa fa-search"></i>
+        </a>
+    </form>
+</div>
 </body>
 </html>

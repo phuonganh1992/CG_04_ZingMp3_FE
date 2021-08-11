@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        @import url(//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css);
+        body {
+            font-family: 'Josefin Sans', sans-serif !important;
+            margin: 5rem 0 5rem 0;
+            font-family: tahoma;
+        }
+        body #music_player {
+
+            margin: 0 auto;
+            background: #402457;
+            height: 4rem;
+            width: 70rem;
+            -webkit-box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 10px 7px 20px -6px rgba(0, 0, 0, 0.75);
+            box-shadow: 10px 0px 20px -6px rgba(0, 0, 0, 0.75);
+        }
+        .artist_img img{
+            height: 200px;
+        }
+        body #music_player .time_slider {
+            background: #301643;
+            height: 3.5rem;
+            width: 22rem;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        body #music_player .time_slider span {
+            position: absolute;
+            font-size: 12px;
+            top: 0.75rem;
+        }
+        body #music_player .time_slider .runing_time {
+            left: 1rem;
+            color: #fecf7d;
+        }
+        body #music_player .time_slider .song_long {
+            right: 1rem;
+            color: #775b8e;
+        }
+        body #music_player .controllers {
+            background: #260f39;
+            height: 3.5rem;
+            width: 25rem;
+            position: absolute;
+            right: 22rem;
+            bottom: 0;
+            font-family: FontAwesome;
+            text-align: center;
+            color: #83649f;
+        }
+        body #music_player .controllers i {
+            position: relative;
+            bottom: -0.7rem;
+            padding: 0 15px 0 15px;
+        }
+        body #music_player .song_info {
+            background: #301643;
+            height: 3.5rem;
+            width: 23rem;
+            position: absolute;
+            left: 0rem;
+            bottom: 0;
+            font-family: FontAwesome;
+            text-align: center;
+            color: #83649f;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            border: 1px solid white;
+            border-radius: 2px;
+            width: 12rem;
+            top: 1rem;
+            left: 0;
+            right: 0;
+            margin: auto;
+            position: absolute;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 300px;
+            height: 5px;
+            background: #8664a1;
+            border: none;
+            border-radius: 3px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 3px solid #fff;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #9200ff;
+            margin-top: -4px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #8664a1;
+        }
+        input[type=range]::-moz-range-track {
+            width: 300px;
+            height: 5px;
+            background: #8664a1;
+            border: none;
+            border-radius: 3px;
+        }
+        input[type=range]::-moz-range-thumb {
+            -webkit-appearance: none;
+            border: 3px solid #fff;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #9200ff;
+            margin-top: -4px;
+        }
+        input[type=range]:-moz-focusring {
+            outline: 1px solid white;
+            outline-offset: -1px;
+        }
+        input[type=range]::-ms-track {
+            width: 300px;
+            height: 5px;
+            background: transparent;
+            border-color: transparent;
+            border-width: 6px 0;
+            color: transparent;
+        }
+        input[type=range]::-ms-fill-lower {
+            background: #777;
+            border-radius: 10px;
+        }
+        input[type=range]::-ms-fill-upper {
+            background: #ddd;
+            border-radius: 10px;
+        }
+        input[type=range]::-ms-thumb {
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: goldenrod;
+        }
+        input[type=range]:focus::-ms-fill-lower {
+            background: #888;
+        }
+        input[type=range]:focus::-ms-fill-upper {
+            background: #ccc;
+        }
+        fieldset {
+            margin: auto;
+            left: 0;
+            right: 0;
+            position: absolute;
+            width: 9rem;
+        }
+
+        i {
+            cursor: pointer;
+        }
+        i:hover {
+            color: #fec35e;
+        }
+
+    </style>
+
+    <style>
+        img{display: block;max-width:100%;}
+        #song_img{
+            width:40px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            animation: xoayvong 20s linear 0s infinite;
+            -webkit-animation: xoayvong 20s linear 0s infinite;
+            -moz-animation: xoayvong 20s linear 0s infinite;
+            -o-animation: xoayvong 20s linear 0s infinite;
+        }
+
+        @-webkit-keyframes xoayvong{
+            from{
+                -webkit-transform:rotate(0deg);
+                -moz-transform:rotate(0deg);
+                -o-transform:rotate(0deg);
+            }
+            to{
+                -webkit-transform:rotate(360deg);
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+            }
+        }
+        /* Standard syntax */
+        @keyframes xoayvong {
+            from{
+                -webkit-transform:rotate(0deg);
+                -moz-transform:rotate(0deg);
+                -o-transform:rotate(0deg);
+            }
+            to{
+                -webkit-transform:rotate(360deg);
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class=" fixed-bottom" id="music_player">
+    <div class="song_info">
+        <div class="row">
+            <div class="col-2">
+                <img id="song_img" src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/user_06.jpg?alt=media&token=19969882-073f-4f33-bb48-a9fd086c6e2f" width="40px">
+            </div>
+            <div class="col-6">Song_name jzshlajcfbahjsbv</div>
+            <div class="col-4">like/comment</div>
+        </div>
+        <span></span>
+    </div>
+    <div class="controllers">
+        <i class="fa fa-music" aria-hidden="true"></i>
+        <i class="fa fa-fast-backward" aria-hidden="true"></i>
+        <i class="fa fa-play" aria-hidden="true"></i>
+        <i class="fa fa-fast-forward" aria-hidden="true"></i>
+        <i class="fa fa-retweet" aria-hidden="true"></i>
+    </div>
+    <div class="time_slider">
+        <span class="runing_time">0:00</span>
+        <input type="range" value="0">
+        <span class="song_long">0:00</span>
+    </div>
+</div>
+
+<script>
+    let audio = new Audio('https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/song_sai%20gon%20dau%20long%20qua.mp3?alt=media&token=d181f52a-d3ba-485a-a4b6-23e5174266cf');
+    let audioTotalTime = 0;
+    $('body').on('click','.fa-play',function(e){
+        audio.play();
+        audioTotalTime = audio.duration / 60;
+        $(this).addClass('fa-pause')
+        $(this).removeClass('fa-play');
+        $('.song_long').text(Math.round(audioTotalTime * 100) / 100);
+        updateCurrentTime();
+    });
+
+    $('body').on('click','input[type=range]',function(){
+        audio.pause();
+        audio.currentTime = audioTotalTime * $(this).val();
+        audio.play();
+    });
+
+    $('body').on('click','.fa-pause',function(){
+        audio.pause();
+        $(this).addClass('fa-play')
+        $(this).removeClass('fa-pause');
+    });
+
+    $('body').on('click','.fa-music',function(){
+        $('.song_list').slideToggle();
+    });
+
+    function updateCurrentTime(){
+        setInterval(function(){
+            var time = audio.currentTime;
+            var minutes = Math.floor(time / 60);
+            var seconds = Math.floor(time);
+            seconds = (seconds - (minutes * 60 )) < 10 ? ('0' + (seconds - (minutes * 60 ))) : (seconds - (minutes * 60 ));
+            var currentTime = minutes + ':' + seconds;
+            $('.runing_time').text(currentTime);
+            $("input[type=range]").val(time/audioTotalTime )
+        },1000)
+
+    }
+</script>
+</body>
+</html>
