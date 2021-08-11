@@ -11,6 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../static/js/loadLayout.js"></script>
     <script>
@@ -37,19 +40,25 @@
     <div id="layout_login"></div>
     <div><h2>Artist List</h2></div>
     <div class="row">
-        <div class="col-9" id="layout_artist">
+        <div class="col-8" id="layout_artist">
         </div>
 
 
-        <div class="col-3">
+        <div class="col-4">
             <center>
                 <div id="img_Artist">
                 </div>
             </center>
+            <center>
+                <div id="upload_Artist">
+                </div>
+            </center>
+<center>
             <h1>Hello</h1>
             <div id="showEditArtist">
 
             </div>
+</center>
         </div>
 
 
@@ -58,13 +67,7 @@
     <div id="layout_footer"></div>
 
 </div>
-<!--<div>-->
-<!--    <form action="/upload.php" method="post" enctype="multipart/form-data">-->
-<!--        Chọn file để upload:-->
-<!--        <input type="file" name="fileupload" id="fileupload">-->
 
-<!--    </form>-->
-<!--</div>-->
 <script src="../static/js/user_list.js"></script>
 <script src="../static/js/artist_list.js"></script>
 <script src="../static/js/user_login.js"></script>
