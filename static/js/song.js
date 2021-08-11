@@ -3,21 +3,20 @@ function loadData(){
         type: "GET",
         url: "http://localhost:8080/api/songs",
         success: function (data){
-            let content =`<table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Img</th>
-            <th scope="col">CreateDate</th>
-            <th scope="col">Artist</th>
-            <th scope="col">User</th>
-            <th scope="col" colspan="2">Action</th>
-        </tr>
-        </thead>`;
+            let content ="        <tr>\n" +
+                "            <th>Id</th>\n" +
+                "            <th>Name Song</th>\n" +
+                "            <th>Desc</th>\n" +
+                "            <th>Img</th>\n" +
+                "            <th>Date </th>\n" +
+                "            <th>Singer </th>\n" +
+                "        </tr>";
             for (let i =0;i<data.length;i++){
-                content += getListSongs(data[i])
+                content +="<br><span>"+data[i].id+":"+data[i].name+":"+data[i].description+":"+data[i].img+":"+data[i].createDate+
+                    ":"+data[i].artist.name+":"
+                    + "<button onclick='showFormEdit("+data[i].id+")'>Edit</button>"+"---" +
+                    "<button onclick='deleteForm("+data[i].id+")'>Delete</button>"+"" +
+                    "</span>"
 
             }
             document.getElementById("content").innerHTML=content;
@@ -25,60 +24,29 @@ function loadData(){
 
     });
 }
-function getListSongs(data){
-    return `<tr>
-                      <th scope="row">${data.id}</th>
-                      <td>${data.name}</td>
-                      <td>${data.description}</td>
-                      <td><img src="${data.img}" width="50px" height="50px"></td>
-                      <td>${data.createDate}</td>
-                      <td>${data.artist.name}</td>
-                      <td>${data.user.name}</td>
-                      <td>
-                 <button style="margin-right: 20px" onclick="showFormEdit(${data.id})">
-                    Edit
-                </button>
-                <button style=" margin-left: 20px" onclick="deleteForm(${data.id})"  >
-                    Delete
-                </button>
-                </td>
-                </tr>
-                `
-}
-function showFormCreate() {
-    document.getElementById("form").innerHTML = '<input type="text" placeholder="tên bài hát" id="namesong">\n' +
-        '<input type="text" placeholder="Mô tả" id="description">\n' +
-        '<input type="text" placeholder="Ảnh nè" id="img">\n' +
-        '<input type="text" placeholder="file MP3" id="mp3">\n' +
-        '<input type="date" placeholder="Ngày tạo" id="date">\n' +
-        '<select id="artist"></select>\n' +
-        '<select id="user"></select>\n' +
-        '<button onclick="saveSong()">Save</button>\n'
+function showFormCreate(){
+    document.getElementById("form").innerHTML='<input type="text" placeholder="tên bài hát" id="namesong">\n'+
+        '<input type="text" placeholder="Mô tả" id="description">\n'+
+        '<input type="text" placeholder="Ảnh nè" id="img">\n'+
+        '<input type="text" placeholder="file MP3" id="mp3">\n'+
+        '<input type="date" placeholder="Ngày tạo" id="date">\n'+
+        '<select id="artist"></select>\n'+
+        '<button onclick="save()">SAVE</button>\n'
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/api/artist",
-        success: function (data) {
-            let str = "";
-            for (let i = 0; i < data.length; i++) {
-                str += "<option value='" + data[i].id + "'>" + data[i].name + "</option>"
+        success: function (data){
+            let str ="";
+            for (let i =0;i<data.length;i++){
+                str +="<option value='"+data[i].id+"'>"+data[i].name+"</option>"
 
             }
-            document.getElementById("artist").innerHTML = str;
+            document.getElementById("artist").innerHTML=str;
         },
     });
-    $.ajax({
-        url: "http://localhost:8080/user/api/list",
-        type: "GET",
-        success: function (data) {
-            let content = ``;
-            for (let i = 0; i < data.length; i++) {
-                content += `<option value=${data[i].id} >${data[i].name} </option>`;
-            }
-            document.getElementById('user').innerHTML = content;
-        }
-    })
+
 }
-function saveSong(){
+function save(){
     let song ={
         name : document.getElementById("namesong").value,
         description : document.getElementById("description").value,
@@ -88,10 +56,9 @@ function saveSong(){
         artist : {
             id:document.getElementById("artist").value
         },
-        user:{
-            id:document.getElementById("user").value
-        }
+
     }
+
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -105,8 +72,8 @@ function saveSong(){
             document.getElementById("form").innerHTML='<button onclick="showFormCreate()">ADD</button>\n'
         }
 
-    })
-    }
+    });
+}
 function showFormEdit(id){
     $.ajax({
         type: "GET",
@@ -119,7 +86,6 @@ function showFormEdit(id){
                 '<input type="text" placeholder="file MP3" id="mp3" value="'+data.mp3+'">\n'+
                 '<input type="date" placeholder="Ngày tạo" id="date" value="'+data.createDate+'">\n'+
                 '<select id="artist"></select value="'+data.artist+'">\n'+
-                '<select id="user"></select value="'+data.user+'">\n'+
                 '<button onclick="saveEdit('+data.id+')">SAVE</button>\n'
             $.ajax({
                 type: "GET",
@@ -133,18 +99,7 @@ function showFormEdit(id){
                     }
                     document.getElementById("artist").innerHTML=str;
                 },
-            })
-            $.ajax({
-                url: "http://localhost:8080/user/api/list",
-                type: "GET",
-                success: function (data) {
-                    let content = ``;
-                    for (let i = 0; i < data.length; i++) {
-                        content += `<option value=${data[i].id} >${data[i].name} </option>`;
-                    }
-                    document.getElementById('user').innerHTML = content;
-                }
-            })
+            });
         }
     });
 }
@@ -174,9 +129,6 @@ function saveEdit(id){
         artist : {
             id:document.getElementById("artist").value
         },
-        user:{
-            id:document.getElementById("user").value
-        }
     }
     $.ajax({
         headers: {
@@ -203,27 +155,24 @@ function search(){
         type: "GET",
         url: "http://localhost:8080/api/search?name="+key,
         success: function (data){
-            console.log(data)
-            let content =`<table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Img</th>
-            <th scope="col">CreateDate</th>
-            <th scope="col">Artist</th>
-            <th scope="col">User</th>
-            <th scope="col" colspan="2">Action</th>
-        </tr>
-        </thead>`;
+            let content ="        <tr>\n" +
+                "            <th>Id</th>\n" +
+                "            <th>Name Song</th>\n" +
+                "            <th>Desc</th>\n" +
+                "            <th>Img</th>\n" +
+                "            <th>Date </th>\n" +
+                "            <th>Singer </th>\n" +
+                "        </tr>";
             for (let i =0;i<data.length;i++){
-                content +=getListSongs(data[i])
+                content +="<br><span>"+data[i].id+":"+data[i].name+":"+data[i].description+":"+data[i].img+":"+data[i].createDate+
+                    ":"+data[i].artist.name+":"
+                    + "<button onclick='showFormEdit("+data[i].id+")'>Edit</button>"+"---" +
+                    "<button onclick='deleteForm("+data[i].id+")'>Delete</button>"+"" +
+                    "</span>"
 
             }
             document.getElementById("content").innerHTML=content;
-        },
-        error: loadData
+        }
 
 
 
@@ -231,4 +180,22 @@ function search(){
     document.getElementById("div").innerHTML='  <button onclick="showFormCreate()">Add</button>\n' +
         '    <button onclick="showFormSearch()">Search</button>\n'
 
+}
+function showSort(){
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/sort?field=createDate",
+        success: function (data){
+            console.log(data)
+            let content ="";
+            for (let i = 0;i<5;i++){
+                content +="<br><span>"+data[i].name+":"+data[i].createDate+
+                    "</span>"
+            }
+            document.getElementById("content").innerHTML=content;
+        },
+        error:function (e){
+            console.log(e)
+        }
+    });
 }
