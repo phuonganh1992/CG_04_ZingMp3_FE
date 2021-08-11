@@ -271,10 +271,10 @@ function loadCardPlaylist() {
             let content = ``
             for (let i = 0; i < data.length; i++) {
                 content += `<div class="col-3 mt-1">                 
-                    <div class="card">
+                    <div class="card-design">
                         <a  class="btn" onclick="getPlaylistById(${data[i].id})">
-                            <img class="card-img" src="${data[i].img}" alt="Card image cap">
-                            <div class="card-content">${data[i].name}</div>
+                            <img class="card_playlist_img" src="${data[i].img}" alt="Card image cap">
+                            <div class="card_playlist_content">${data[i].name}</div>
                          </a>
                     </div>
                     </div>`;
@@ -318,8 +318,6 @@ function getPlaylistById(playlistId){
                 </thead>
                 <tbody id="list_song">`;
             let songs=playlist.songs;
-            console.log(songs)
-
             for (let i = 0; i < songs.length; i++) {
                 content += `<tr>
                     <td><img src="${songs[i].img}" width="20px"></td>
@@ -347,9 +345,6 @@ function getPlaylistById(playlistId){
                     </td>
                 </tr>`;
             }
-            console.log(content)
-
-
             content+=`</tbody>
             </table>
         </div>

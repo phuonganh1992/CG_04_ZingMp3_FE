@@ -258,17 +258,6 @@ function hasUserLogin() {
     $("#btn_login_signup").html(content);
 }
 
-function getUser(id) {
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/user/api/" + id,
-        headers: {"Authorization": 'Bearer ' + localStorage.getItem("token")},
-        success: function (data) {
-            console.log(data);
-        }
-    })
-}
-
 function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("userLogin");
