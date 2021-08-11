@@ -23,7 +23,10 @@ function getAllArtist() {
             for (let i = 0; i < data.length; i++) {
                 str += `<tr>
 <td>${data[i].id}</td>
-<td><img src="${data[i].image}" style="width: 40px;height: 40px">
+<td>
+<button onclick="showArtist(${data[i].id})" style="padding: 0;border: none;background: none">
+<img src="${data[i].image}" style="width: 40px;height: 40px">
+</button>
 </td>
 <td>${data[i].name}</td>
 <td>${data[i].description}</td>
@@ -200,3 +203,21 @@ function uploadImageArtist() {
 
 }
 
+function showArtist(id){
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "GET",
+        url: "http://localhost:8080/api/artists/" + id,
+        success: function (data) {
+            document.getElementById("img_Artist").innerHTML = '  <img src="'+ data.image +'" alt="" id="image" style="width: 160px;height: 160px"> '
+
+            document.getElementById("showEditArtist").innerHTML =
+                '<center>   <h1>Name: '+ data.name+'</h1></center>\n' +
+                ' <center>  <h1>Description: '+ data.description+'</h1></center>\n'
+
+        }
+    });
+}
