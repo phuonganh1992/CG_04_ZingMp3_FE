@@ -209,8 +209,39 @@ function loadLayoutMainTaskbar(){
 
 function loadLayoutFooter(){
     let content=`<div class="row mt-3" id="layout_footer">
-        <div class="col-12 text-center">
-            Footer
+        <div class="footer-dark">
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Hỗ trợ</h3>
+                            <ul>
+                                <li><a href="#">Trợ giúp</a></li>
+                                <li><a href="#">Sơ đồ</a></li>
+                                <li><a href="#">NCCI</a></li>
+                                <li><a href="#">Liên hệ quảng cáo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Sản phẩm khác</h3>
+                            <ul>
+                                <li><a href="#">Mobile App</a></li>
+                                <li><a href="#">Mobile Web</a></li>
+                                <li><a href="#">Smart TV</a></li>
+                                <li><a href="#">Desktop</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 item text">
+                            <h3>Công ty cổ phần MP3</h3>
+                            <p>Số 15, Tầng 1 Lô T04, khu đô thị Moncity, ngõ 2 đường Hàm Nghi, quận Nam Từ Liêm,TP. Hà Nội.</p>
+
+                            <p>  Giấy phép số 0000/GP-TTĐT do Sở Thông tin và Truyền thông Hà Nội cấp ngày 11 tháng 8 năm 2021</p>
+                        </div>
+                        <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    </div>
+                    <p class="copyright">Công ty cổ phần MP3 © 2021</p>
+                </div>
+            </footer>
         </div>
     </div>`;
     $("#layout_footer").html(content);
