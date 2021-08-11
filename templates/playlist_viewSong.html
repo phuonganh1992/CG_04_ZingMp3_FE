@@ -8,25 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../static/js/loadLayout.js"></script>
-    <script>
-        function load() {
-            loadLayoutMenu();
-            loadLayoutLogin();
-            loadLayoutMainAdv();
-            loadLayoutFooter();
-            hasUserLogin();
-            getAllSong()
-
-        }
-    </script>
     <link rel="stylesheet" href="../static/css/login.css">
-    <script src="../static/js/redirect.js"></script>
-    <script src="../static/js/user_list.js"></script>
-    <script src="../static/js/user_login.js"></script>
-    <script src="../static/js/user_view_edit.js"></script>
-    <script src="../static/js/playlist.js"></script>
+    <link rel="stylesheet" href="../static/css/search.css">
+    <link rel="stylesheet" href="../static/css/card.css">
     <style>
         img {
             display: block;
@@ -349,13 +333,102 @@
             color: #fec35e;
         }
     </style>
+    <script src="../static/js/redirect.js"></script>
+    <script src="../static/js/user_list.js"></script>
+    <script src="../static/js/user_login.js"></script>
+    <script src="../static/js/user_view_edit.js"></script>
+    <script src="../static/js/playlist.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../static/js/loadLayout.js"></script>
+    <script>
+        function load() {
 
+           getAllSong()
+
+        }
+    </script>
 </head>
 <body onload="load()">
-<div class="container">
-    <div id="layout_menu"></div>
-    <div id="layout_login"></div>
-    <div id="layout_main" class="row">
+
+<div class="container-fluid" id="layout_whole">
+<!--    <div class="row fixed-top" id="layout_menu"></div>-->
+<!--    <div class="row mt-3"  id="layout_login"></div>-->
+<!--    <div class="row mt-3" id="layout_main" class="row">-->
+<!--        <div id="layout_mainPlaylist" class="col-3">-->
+<!--            <div class="row">-->
+<!--                <div class="card" style="width: 18rem;">-->
+<!--                    <img class="dia-cd"-->
+<!--                         src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/playlist_img_01.jpg?alt=media&token=0ee5cb83-540f-4566-abce-1f2409384178"-->
+<!--                         class="card-img-top" width="300px">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">Playlist name</h5>-->
+<!--                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of-->
+<!--                            the card's content.</p>-->
+<!--                        <i class="fa fa-play" id="btn_play_1" aria-hidden="true"></i>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div id="layout_mainTaskbarPlaylist" class="col-9">-->
+<!--            <table class="table table-hover">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col" colspan="2">Bài hát</th>-->
+
+<!--                    <th scope="col" colspan="3">Mặc định</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody id="list_song">-->
+
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div id="layout_footer"></div>-->
+<!--    <div class=" fixed-bottom" id="music_player">-->
+<!--        <div class="song_info">-->
+<!--            <div class="row">-->
+<!--                <div class="col-2">-->
+<!--                    <img id="song_img"-->
+<!--                         src=""-->
+<!--                         width="60px">-->
+<!--                </div>-->
+<!--                <div class="col-6" id="song_name"></div>-->
+<!--                <div class="col-2" id="img_like"><img-->
+<!--                        src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_04_unlike.png?alt=media&token=69f682e4-f421-4e51-af78-f74cbe0a3a18"-->
+<!--                        width="20px"></div>-->
+<!--                <div class="col-2" id="img_comment"><img-->
+<!--                        src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_03_comment.png?alt=media&token=bba6c830-7a8a-406d-a134-47b963510875"-->
+<!--                        width="20px"></div>-->
+<!--            </div>-->
+<!--            <span></span>-->
+<!--        </div>-->
+<!--        <div class="controllers">-->
+<!--            <i class="fa fa-music" aria-hidden="true"></i>-->
+<!--            <i class="fa fa-fast-backward" aria-hidden="true"></i>-->
+<!--            <i class="fa fa-play" id="btn_play_2" aria-hidden="true"></i>-->
+<!--            <i class="fa fa-fast-forward" aria-hidden="true"></i>-->
+<!--            <i class="fa fa-retweet" aria-hidden="true"></i>-->
+<!--        </div>-->
+<!--        <div class="time_slider">-->
+<!--            <span class="runing_time">0:00</span>-->
+<!--            <input id="time" type="range" value="0">-->
+<!--            <span class="song_long">0:00</span>-->
+<!--        </div>-->
+<!--        <div class="volume_slider">-->
+<!--            <img id="img_volume"-->
+<!--                 src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_07_volume.png?alt=media&token=bedfe6b8-6907-4024-ac1e-7a5bea0fb9c8"-->
+<!--                 width="20px">-->
+<!--            <input id="vol" type="range" min="0" max="100" step="1" value="50">-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+
+<script>
+    function getAllSong() {
+        let content =`<div class="row fixed-top" id="layout_menu"></div>
+    <div class="row mt-3"  id="layout_login"></div>
+    <div class="row mt-3" id="layout_main" class="row">
         <div id="layout_mainPlaylist" class="col-3">
             <div class="row">
                 <div class="card" style="width: 18rem;">
@@ -371,7 +444,7 @@
                 </div>
             </div>
         </div>
-        <div id="layout_mainTaskbarPlaylist" class="col-8">
+        <div id="layout_mainTaskbarPlaylist" class="col-9">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -380,59 +453,12 @@
                     <th scope="col" colspan="3">Mặc định</th>
                 </tr>
                 </thead>
-                <tbody id="list_song">
-
-                </tbody>
-            </table>
-        </div>
-        <div id="layout_mainAdv" class="col-1"></div>
-    </div>
-    <div id="layout_footer"></div>
-</div>
-<div class=" fixed-bottom" id="music_player">
-    <div class="song_info">
-        <div class="row">
-            <div class="col-2">
-                <img id="song_img"
-                     src=""
-                     width="60px">
-            </div>
-            <div class="col-6" id="song_name"></div>
-            <div class="col-2" id="img_like"><img
-                    src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_04_unlike.png?alt=media&token=69f682e4-f421-4e51-af78-f74cbe0a3a18"
-                    width="20px"></div>
-            <div class="col-2" id="img_comment"><img
-                    src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_03_comment.png?alt=media&token=bba6c830-7a8a-406d-a134-47b963510875"
-                    width="20px"></div>
-        </div>
-        <span></span>
-    </div>
-    <div class="controllers">
-        <i class="fa fa-music" aria-hidden="true"></i>
-        <i class="fa fa-fast-backward" aria-hidden="true"></i>
-        <i class="fa fa-play" id="btn_play_2" aria-hidden="true"></i>
-        <i class="fa fa-fast-forward" aria-hidden="true"></i>
-        <i class="fa fa-retweet" aria-hidden="true"></i>
-    </div>
-    <div class="time_slider">
-        <span class="runing_time">0:00</span>
-        <input id="time" type="range" value="0">
-        <span class="song_long">0:00</span>
-    </div>
-    <div class="volume_slider">
-        <img id="img_volume"
-             src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_07_volume.png?alt=media&token=bedfe6b8-6907-4024-ac1e-7a5bea0fb9c8"
-             width="20px">
-        <input id="vol" type="range" min="0" max="100" step="1" value="50">
-    </div>
-</div>
-<script>
-    function getAllSong() {
-        let content = "";
+                <tbody id="list_song">`;
         $.ajax({
             type: "GET",
             url: "http://localhost:8080/api/songs",
             success: function (data) {
+                console.log(data)
                 for (let i = 0; i < data.length; i++) {
 
                     content += `<tr>
@@ -460,18 +486,58 @@
                     </td>
                 </tr>`;
                 }
-                document.getElementById("list_song").innerHTML = content;
+                content+=`</tbody>
+            </table>
+        </div>
+    </div>
+    <div id="layout_footer"></div>
+    <div class=" fixed-bottom" id="music_player">
+        <div class="song_info">
+            <div class="row">
+                <div class="col-2">
+                    <img id="song_img"
+                         src=""
+                         width="60px">
+                </div>
+                <div class="col-6" id="song_name"></div>
+                <div class="col-2" id="img_like"><img
+                        src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_04_unlike.png?alt=media&token=69f682e4-f421-4e51-af78-f74cbe0a3a18"
+                        width="20px"></div>
+                <div class="col-2" id="img_comment"><img
+                        src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_03_comment.png?alt=media&token=bba6c830-7a8a-406d-a134-47b963510875"
+                        width="20px"></div>
+            </div>
+            <span></span>
+        </div>
+        <div class="controllers">
+            <i class="fa fa-music" aria-hidden="true"></i>
+            <i class="fa fa-fast-backward" aria-hidden="true"></i>
+            <i class="fa fa-play" id="btn_play_2" aria-hidden="true"></i>
+            <i class="fa fa-fast-forward" aria-hidden="true"></i>
+            <i class="fa fa-retweet" aria-hidden="true"></i>
+        </div>
+        <div class="time_slider">
+            <span class="runing_time">0:00</span>
+            <input id="time" type="range" value="0">
+            <span class="song_long">0:00</span>
+        </div>
+        <div class="volume_slider">
+            <img id="img_volume"
+                 src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_07_volume.png?alt=media&token=bedfe6b8-6907-4024-ac1e-7a5bea0fb9c8"
+                 width="20px">
+            <input id="vol" type="range" min="0" max="100" step="1" value="50">
+        </div>
+    </div>`
+                document.getElementById("layout_whole").innerHTML = content;
+                loadLayoutMenu();
+                loadLayoutLogin();
+                loadLayoutFooter();
             }
         })
     }
 </script>
 <script>
     let audio = new Audio('');
-
-    function stopMusic(songId) {
-
-    }
-
     function playMusic(songId) {
         $.ajax({
             type: "GET",
@@ -483,17 +549,14 @@
                 console.log("error: " + e)
             }
         })
-
         setTimeout(() => {
             audio.pause();
             let currentSong = JSON.parse(localStorage.getItem("currentSong"));
-
             $("#song_img").attr("src", currentSong.img);
             $("#song_name").text(currentSong.name);
 
             audio = new Audio(currentSong.mp3);
             audio.play();
-
         }, 1000)
 
         $('body').on('click', '.fa-play', function (e) {
@@ -535,8 +598,6 @@
                 $("#time").val(time / audioTotalTime)
             }, 1000)
         }
-
-
     }
 </script>
 </body>

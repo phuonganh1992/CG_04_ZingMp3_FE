@@ -207,13 +207,6 @@ function loadLayoutMainTaskbar(){
     $("#layout_mainTaskbar").html(content);
 }
 
-function loadLayoutMainAdv(){
-    let content=`<div class="col-2 text-center" id="layout_mainAdv" style="background-color: orange">
-            Advertise
-        </div>`;
-    $("#layout_mainAdv").html(content);
-}
-
 function loadLayoutFooter(){
     let content=`<div class="row mt-3" id="layout_footer">
         <div class="col-12 text-center">

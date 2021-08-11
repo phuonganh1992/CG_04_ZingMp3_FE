@@ -6,22 +6,22 @@ function openLoginForm() {
 function closeLoginForm() {
     document.body.classList.remove("showLoginForm");
 }
-
-$("#showPass1").click(function () {
-    let currentType = $("#password").attr("type");
-    $("#password").attr("type",
-        currentType === "password" ? "text" : "password");
-})
-$("#showPass2").click(function () {
-    let currentType = $("#password_regis").attr("type");
-    $("#password_regis").attr("type",
-        currentType === "password" ? "text" : "password");
-})
-$("#showPass3").click(function () {
-    let currentType = $("#re-password_regis").attr("type");
-    $("#re-password_regis").attr("type",
-        currentType === "password" ? "text" : "password");
-})
+//
+// $("#showPass1").click(function () {
+//     let currentType = $("#password").attr("type");
+//     $("#password").attr("type",
+//         currentType === "password" ? "text" : "password");
+// })
+// $("#showPass2").click(function () {
+//     let currentType = $("#password_regis").attr("type");
+//     $("#password_regis").attr("type",
+//         currentType === "password" ? "text" : "password");
+// })
+// $("#showPass3").click(function () {
+//     let currentType = $("#re-password_regis").attr("type");
+//     $("#re-password_regis").attr("type",
+//         currentType === "password" ? "text" : "password");
+// })
 
 function showRegisterForm() {
     let content=`<div class="form" id="formRegister">

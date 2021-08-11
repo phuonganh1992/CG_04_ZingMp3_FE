@@ -14,4 +14,8 @@ function redirectPlaylist(){
     window.location.href="playlist_list.html";
 }
 
+function redirectOnePlaylist(){
+    window.location.href="playlist_viewSong.html";
+}
+
 
