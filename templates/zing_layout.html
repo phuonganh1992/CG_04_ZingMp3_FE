@@ -13,12 +13,20 @@
     <link rel="stylesheet" href="../static/css/login.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../static/css/search.css">
+    <link rel="stylesheet" href="../static/css/card.css">
     <script src="../static/js/playlist.js"></script>
     <script src="../static/js/redirect.js"></script>
+    <script>
+        function load(){
+            hasUserLogin();
+            loadCardPlaylist()
+        }
+    </script>
+
 
 </head>
 <body background="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/make_some_noise-wallpaper-2560x1440.jpg?alt=media&token=199aaeb6-2eb9-4f84-8e5e-1a95ad7e3a9c"
-      onload="hasUserLogin();loadCardPlaylist()">
+      onload="load()">
 <div class="container-fluid">
     <div class="row fixed-top" id="layout_menu">
         <nav class="navbar navbar-expand-lg navbar-light"
@@ -205,15 +213,15 @@
     </div>
 
     <div class="row mt-3" id="layout_main">
-        <div class="col-7 text-center" id="layout_mainContent" style="background-color: palegoldenrod">
+        <div class="col-8 text-center" id="layout_mainContent" >
             <!--            Main-->
             <div class="row" id="layout_playlist">
 
             </div>
         </div>
-        <div class="col-5 text-center" id="layout_mainTaskbar" style="background-color: #00dbde">
+        <div class="col-4 text-center" id="layout_mainTaskbar" >
             <!--            Task bar-->
-            <div id="layout_viewSongs">
+            <div id="layout_topSong">
 
             </div>
         </div>

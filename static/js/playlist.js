@@ -264,10 +264,12 @@ function loadModalPlaylist() {
 }
 
 function loadCardPlaylist() {
+    console.log(1)
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/playlists",
         success: function (data) {
+            console.log(data)
             let content = ``
             for (let i = 0; i < data.length; i++) {
                 content += getCardPlaylist(data[i])
@@ -275,25 +277,20 @@ function loadCardPlaylist() {
             }
             document.getElementById('layout_playlist').innerHTML = content;
         }
-
     })
 
 }
 
 function getCardPlaylist(data) {
-    return `   
-                    <div class="col-6 mt-3">                 
+    return ` <div class="col-3 mt-1">                 
                     <div class="card">
-                        <a  class="btn" onclick="getPlaylistById(${data.id})">
-                            <img class="card-img-top" style="width: 100%;height: 300px" src="${data.img}" alt="Card image cap">
-                            <div class="card-body">
-                                  <h5 class="card-title">${data.name}</h5>
-                                  <p class="card-text">${data.description}</p>
-                            </div>
+                        <a  class="btn" onclick="getPlaylistById(${data.id})" onclick="">
+                            <img class="card-img" src="${data.img}" alt="Card image cap">
+                            <div class="card-content">${data.name}</div>
+
                          </a>
                     </div>
-                    </div>  
-               `
+                    </div>`;
 }
 function getPlaylistById(id){
     $.ajax({
