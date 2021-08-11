@@ -10,6 +10,7 @@ function showList() {
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
+            <th scope="col">Img</th>
             <th scope="col">User</th>
             <th scope="col" colspan="2">Action</th>
         </tr>
@@ -28,6 +29,7 @@ function getListPlaylist(data) {
                       <th scope="row">${data.id}</th>
                       <td>${data.name}</td>
                       <td>${data.description}</td>
+                      <td><img src="${data.img}" width="50px" height="50px"></td>
                       <td>${data.user.username}</td>
                       <td>
                  <button style="margin-right: 20px" onclick="editPlaylist(${data.id})" "type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalEdit">
