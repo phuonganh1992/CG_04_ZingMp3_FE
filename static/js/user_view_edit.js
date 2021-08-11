@@ -15,6 +15,7 @@ function viewUserInfor() {
     $("#user-profile-main").html(userProfileMainContent);
 }
 
+
 function viewUserAccount() {
     let userLogin = JSON.parse(localStorage.getItem("userLogin"));
     let editContent = `<div id="editUser">

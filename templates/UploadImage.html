@@ -15,7 +15,8 @@
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-storage.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+<!-- TODO: Add SDKs for Firebas
+e products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
 
@@ -35,7 +36,7 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
     // console.log(firebase)
-
+    // gs://zingmp3-project.appspot.com
     function uploadImage(){
         const  ref=firebase.storage().ref();
         const file=document.querySelector("#photo").files[0];
@@ -51,7 +52,7 @@
                 alert("Image upload successful");
                 const image=document.querySelector("#image");
                 image.src=url;
-                console.log(url)
+
                 document.getElementById('main').innerHTML = `<img src="${url}" alt=""> </<img>`
 
             })
