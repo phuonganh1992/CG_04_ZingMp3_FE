@@ -1,53 +1,146 @@
 function loadLayoutMenu(){
-    let content=`<div class="row mt-3" id="layout_menu">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    let content=`<div class="row fixed-top" id="layout_menu">
+        <nav class="navbar navbar-expand-lg navbar-light"
+             style="background: url('https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/background_6.png?alt=media&token=a247cf31-31de-40f8-af17-20dc6e476a95')">
             <div class="container-fluid">
-                <a class="navbar-brand" onclick="redirectHome()"><img src="https://lndesign.com.vn/wp-content/uploads/2021/01/thiet-ke-logo-am-nhac-1.jpg" alt="" style="width: 100px;height: 100px"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" onclick="redirectHome()"><img
+                        src="https://icons.iconarchive.com/icons/amineworld/music-of-the-spheres/128/MP3-blue-icon.png"
+                        alt="" style="width: 50px;height: 50px"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                       <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#layout_viewSongs" id="navbarDropdown1" role="button"  aria-expanded="false">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Bài hát
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Việt Nam</a></li>
+                                <li><a class="dropdown-item" href="#">Âu Mỹ</a></li>
+                                <li><a class="dropdown-item" href="#">Châu Á</a></li>
+                                <li><a class="dropdown-item" href="#">Khác</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#layout_playlist" id="navbarDropdown2" role="button"  aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Playlist
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Việt Nam</a></li>
+                                <li><a class="dropdown-item" href="#">Âu Mỹ</a></li>
+                                <li><a class="dropdown-item" href="#">Châu Á</a></li>
+                                <li><a class="dropdown-item" href="#">Khác</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"  aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 BXH
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Việt Nam</a></li>
+                                <li><a class="dropdown-item" href="#">Âu Mỹ</a></li>
+                                <li><a class="dropdown-item" href="#">Châu Á</a></li>
+                                <li><a class="dropdown-item" href="#">Khác</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"  aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Chủ đề
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Việt Nam</a></li>
+                                <li><a class="dropdown-item" href="#">Âu Mỹ</a></li>
+                                <li><a class="dropdown-item" href="#">Châu Á</a></li>
+                                <li><a class="dropdown-item" href="#">Khác</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Top 100
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Khám phá</a></li>
+                                <li><a class="dropdown-item" href="#">Nghệ sĩ</a></li>
+                                <li><a class="dropdown-item" href="#">Tin tức âm nhạc</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        <li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Chủ đề
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Khám phá</a></li>
+                                <li><a class="dropdown-item" href="#">Nghệ sĩ</a></li>
+                                <li><a class="dropdown-item" href="#">Tin tức âm nhạc</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        <li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown7" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 ...
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Khám phá</a></li>
                                 <li><a class="dropdown-item" href="#">Nghệ sĩ</a></li>
                                 <li><a class="dropdown-item" href="#">Tin tức âm nhạc</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         <li>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
+
+                            <form class="sbox" action="/search" method="get">
+                                <input class="stext" type="text" name="q" placeholder="Tìm kiếm bài hát/ ca sĩ...">
+                                <a class="sbutton" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </a>
                             </form>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><img
+                                    src="https://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Button-Upload-icon.png"
+                                    style="width: 33px; margin-left: 20px;margin-top: -4px;margin-right: 20px"></a>
+                        </li>
+
                         <li class="nav-item" id="btn_login_signup">
-                            <button class="btn btn-outline-success" type="submit" onclick="openLoginForm()">Login/SignUp</button>
+                            <button class="btn btn-outline-info btn-info" type="submit" onclick="openLoginForm()">
+                                Login/SignUp
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -71,27 +164,27 @@ function loadLayoutLogin(){
 function loadLayoutCarousel(){
     let content=`<div class="row mt-3" id="layout_carousel">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="https://avatar-ex-swe.nixcdn.com/slideshow/2021/08/04/2/1/1/7/1628070866868_org.jpg" class="d-block w-100" alt="...">
+                    <img src="https://avatar-ex-swe.nixcdn.com/slideshow/2021/08/10/0/a/a/c/1628583256909_org.jpg"
+                         class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://avatar-ex-swe.nixcdn.com/slideshow/2021/06/15/3/c/6/0/1623725622440_org.jpg" class="d-block w-100" alt="...">
+                    <img src="https://avatar-ex-swe.nixcdn.com/slideshow/2021/08/09/e/d/2/c/1628504246139_org.jpg"
+                         class="d-block w-100">
                 </div>
                 <div class="carousel-item">
-                    <img src="https://avatar-ex-swe.nixcdn.com/slideshow/2021/08/06/7/8/6/4/1628224641697_org.jpg" class="d-block w-100" alt="...">
+                    <img src="https://avatar-ex-swe.nixcdn.com/slideshow/2021/08/09/e/d/2/c/1628504133504_org.jpg"
+                         class="d-block w-100">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -112,13 +205,6 @@ function loadLayoutMainTaskbar(){
             Task bar
         </div>`;
     $("#layout_mainTaskbar").html(content);
-}
-
-function loadLayoutMainAdv(){
-    let content=`<div class="col-2 text-center" id="layout_mainAdv" style="background-color: orange">
-            Advertise
-        </div>`;
-    $("#layout_mainAdv").html(content);
 }
 
 function loadLayoutFooter(){

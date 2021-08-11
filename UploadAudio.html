@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../static/js/redirect.js"></script>
+    <script src="static/js/redirect.js"></script>
 </head>
 <body>
-<input type="file" id="photo">
-<button onclick="uploadImage()">Upload Image</button>
+<div id="main"></div>
+<input type="file" id="audio">
+<button onclick="uploadAudio()">Upload audio</button>
 
-<img id="image" src="" alt="">
 </body>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-storage.js"></script>
 
-<!--  https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
 
 <script>
@@ -33,11 +34,11 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-    // console.log(firebase)
-    // gs://zingmp3-project.appspot.com
-    function uploadImage(){
+    console.log(firebase)
+
+    function uploadAudio(){
         const  ref=firebase.storage().ref();
-        const file=document.querySelector("#photo").files[0];
+        const file=document.querySelector("#audio").files[0];
         const name=file.name;
         const metadata={
             contentType:file.type
@@ -47,12 +48,9 @@
         task
             .then(snapshot => snapshot.ref.getDownloadURL())
             .then(url => {
-                alert("Image upload successful");
-                const image=document.querySelector("#image");
-                image.src=url;
-
-                document.getElementById('main').innerHTML = `<img src="${url}" alt=""> </<img>`
-
+                console.log(url);
+                alert("Audio upload successful");
+                document.getElementById('main').innerHTML = `<audio controls preload="none"> <source src="${url}"> </audio>`
             })
     }
 </script>

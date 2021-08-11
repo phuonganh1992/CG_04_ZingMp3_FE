@@ -1,0 +1,48 @@
+.card-design {
+    position: relative;
+    width: 100%; /* Maximum width */
+    margin: 0 auto; /* Center it */
+    border-radius: 5px;
+}
+
+.card-design .card_playlist_content {
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(37, 61, 84, 0.4); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 100%; /* Full width */
+    padding: 0px; /* Some padding */
+}
+.card_playlist_content{
+    left: 0px;
+    border-radius: 5px;
+}
+
+.card_playlist_content:hover{
+    left: 0px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+.card_playlist_img{
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 2px; /* Some padding */
+    width: 150px;
+    height: 100px;
+    transform: scale(1);
+
+}
+.card_playlist_img:hover{
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    transform: scale(1.1);
+
+}
+.card-design{
+    background: #6a9f64;
+    background: rgba(135, 210, 89, 0.3)
+
+
+}
