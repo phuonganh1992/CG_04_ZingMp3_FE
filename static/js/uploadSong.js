@@ -3,53 +3,6 @@ function showFormUploadSong() {
         keyboard: false
     })
     myModal.show();
-    console.log("problem")
-    // let content=`<div class="modal fade" id="modalUploadSong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    //     <div class="modal-dialog">
-    //         <div class="modal-content">
-    //             <a href="" style="position: inherit;margin-left: 480px;text-decoration: none;color: gray"
-    //                data-bs-dismiss="modal">x</a>
-    //             <div class="modal-header">
-    //                 <h5 class="modal-title">Upload Song</h5>
-    //             </div>
-    //             <div class="modal-body">
-    //                 <div class="mb-3">
-    //                     <a><label class="form-label">Name</label>
-    //                         <input type="email" class="form-control" id="namesong" aria-describedby="emailHelp"
-    //                                placeholder="Name of song"></a>
-    //
-    //                 </div>
-    //                 <div class="mb-3">
-    //                     <label class="form-label">description</label>
-    //                     <input type="text" class="form-control" id="description" placeholder="Description">
-    //                 </div>
-    //
-    //                 <div class="mb-3">
-    //                     <label class="form-label">Image</label>
-    //                     <input type="file" class="form-control" id="img">
-    //                     <button onclick="uploadImage()">Upload Image</button>
-    //                     <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_05_like.png?alt=media&token=2a53e1e4-1f29-4639-bd03-2ec4afee94be" alt="" id="img_uploaded" style="width: 40px;height: 40px">
-    //                 </div>
-    //                 <div class="mb-3">
-    //                     <label class="form-label">File mp3</label>
-    //                     <input type="file" placeholder="file MP3" id="mp3">
-    //                     <button onclick="uploadAudio()">Upload mp3</button>
-    //                     <div id="audio_uploaded"></div>
-    //                 </div>
-    //                 <div>
-    //                     <select id="song_artist"></select>
-    //                 </div>
-    //             </div>
-    //             <div class="modal-footer">
-    //                 <a onclick="uploadSong()"><img
-    //                         src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_01_home.png?alt=media&token=35fec41e-91a2-41d0-b1c1-77b50be6f342"
-    //                         width="40px"></a>
-    //                 <div id="message_createSong"></div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>`;
-    // $("#modalUploadSong").html(content);
 }
 
 function uploadSong() {
