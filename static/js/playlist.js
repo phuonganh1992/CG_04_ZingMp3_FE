@@ -309,7 +309,7 @@ function getPlaylistById(playlistId){
             </div>
         </div>
         <div id="layout_mainTaskbarPlaylist" class="col-9">
-            <table class="table table-hover">
+            <table class="table table-hover table-warning" style="border-radius: 5px">
                 <thead>
                 <tr>
                     <th scope="col" colspan="2">Bài hát</th>
@@ -392,6 +392,7 @@ function getPlaylistById(playlistId){
             loadLayoutMenu();
             loadLayoutLogin();
             loadLayoutFooter();
+            hasUserLogin();
         }
     })
 }

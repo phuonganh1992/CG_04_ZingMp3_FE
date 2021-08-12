@@ -106,7 +106,7 @@ function saveSong(){
         }
 
     })
-    }
+}
 function showFormEdit(id){
     $.ajax({
         type: "GET",
@@ -231,4 +231,22 @@ function search(){
     document.getElementById("div").innerHTML='  <button onclick="showFormCreate()">Add</button>\n' +
         '    <button onclick="showFormSearch()">Search</button>\n'
 
+}
+function showSort(){
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/sort?field=createDate",
+        success: function (data){
+            console.log(data)
+            let content ="";
+            for (let i = 0;i<5;i++){
+                content +="<br><span>"+data[i].name+":"+data[i].createDate+
+                    "</span>"
+            }
+            document.getElementById("content").innerHTML=content;
+        },
+        error:function (e){
+            console.log(e)
+        }
+    });
 }
