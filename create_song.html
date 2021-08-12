@@ -3,48 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 </head>
-<body onload="getUserSong(),getArtistSong()">
-<table>
-    <tr>
-        <td>
-            <input type="text" placeholder="tên bài hát" id="namesong">
-        </td>
-    </tr>
-    <tr>
-        <td><input type="text" placeholder="Mô tả" id="description"></td>
-    </tr>
-    <tr>
-        <td><input type="file" placeholder="Ảnh nè" id="img"></td>
-        <td>
-            <button onclick="uploadImage()">Upload Image</button>
-        </td>
-        <td>
-            <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_02_edit.png?alt=media&token=4dee67f0-ed31-420f-bf88-6cfb1f5fcb9d" alt="" id="img_uploaded" style="width: 40px;height: 40px">
+<body onload="getArtistSong()">
+<div class="container-fluid">
+<!--    <button onclick="showFormUploadSong()" class="btn btn-primary " data-bs-toggle="modal"-->
+<!--            data-bs-target="#modalCreate">Upload Song-->
+<!--    </button>-->
+    <a class="nav-link" onclick="showFormUploadSong()" ><img
+            src="https://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Button-Upload-icon.png"
+            style="width: 33px; margin-left: 20px;margin-top: -4px;margin-right: 20px"></a>
+    <div class="modal fade" id="modalUploadSong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a href="" style="position: inherit;margin-left: 480px;text-decoration: none;color: gray"
+                   data-bs-dismiss="modal">x</a>
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload Song</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <a><label class="form-label">Name</label>
+                            <input type="email" class="form-control" id="namesong" aria-describedby="emailHelp"
+                                   placeholder="Name of song"></a>
 
-        </td>
-    </tr>
-    <tr>
-        <td><input type="file" placeholder="file MP3" id="mp3"></td>
-        <td>
-            <button onclick="uploadAudio()">Upload mp3</button>
-        </td>
-        <td>
-            <div id="audio_uploaded"></div>
-        </td>
-    </tr>
-    <tr>
-        <td><select id="song_artist"></select></td>
-    </tr>
-    <tr>
-        <td><select id="song_user"></select></td>
-    </tr>
-    <tr>
-        <td>
-            <button onclick="save()">SAVE</button>
-        </td>
-    </tr>
-</table>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">description</label>
+                        <input type="text" class="form-control" id="description" placeholder="Description">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="file" class="form-control" id="img">
+                        <button onclick="uploadImage()">Upload Image</button>
+                        <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_05_like.png?alt=media&token=2a53e1e4-1f29-4639-bd03-2ec4afee94be" alt="" id="img_uploaded" style="width: 40px;height: 40px">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">File mp3</label>
+                        <input type="file" placeholder="file MP3" id="mp3">
+                        <button onclick="uploadAudio()">Upload mp3</button>
+                        <div id="audio_uploaded"></div>
+                    </div>
+                    <div>
+                        <select id="song_artist"></select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a onclick="uploadSong()"><img
+                            src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_01_home.png?alt=media&token=35fec41e-91a2-41d0-b1c1-77b50be6f342"
+                            width="40px"></a>
+                    <div id="message_createSong"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showFormUploadSong() {
+    //     let content=`<div class="modal fade" id="modalUploadSong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    //     <div class="modal-dialog">
+    //         <div class="modal-content">
+    //             <a href="" style="position: inherit;margin-left: 480px;text-decoration: none;color: gray"
+    //                data-bs-dismiss="modal">x</a>
+    //             <div class="modal-header">
+    //                 <h5 class="modal-title">Upload Song</h5>
+    //             </div>
+    //             <div class="modal-body">
+    //                 <div class="mb-3">
+    //                     <a><label class="form-label">Name</label>
+    //                         <input type="email" class="form-control" id="namesong" aria-describedby="emailHelp"
+    //                                placeholder="Name of song"></a>
+    //
+    //                 </div>
+    //                 <div class="mb-3">
+    //                     <label class="form-label">description</label>
+    //                     <input type="text" class="form-control" id="description" placeholder="Description">
+    //                 </div>
+    //
+    //                 <div class="mb-3">
+    //                     <label class="form-label">Image</label>
+    //                     <input type="file" class="form-control" id="img">
+    //                     <button onclick="uploadImage()">Upload Image</button>
+    //                     <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_05_like.png?alt=media&token=2a53e1e4-1f29-4639-bd03-2ec4afee94be" alt="" id="img_uploaded" style="width: 40px;height: 40px">
+    //                 </div>
+    //                 <div class="mb-3">
+    //                     <label class="form-label">File mp3</label>
+    //                     <input type="file" placeholder="file MP3" id="mp3">
+    //                     <button onclick="uploadAudio()">Upload mp3</button>
+    //                     <div id="audio_uploaded"></div>
+    //                 </div>
+    //                 <div>
+    //                     <select id="song_artist"></select>
+    //                 </div>
+    //             </div>
+    //             <div class="modal-footer">
+    //                 <a onclick="uploadSong()"><img
+    //                         src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_01_home.png?alt=media&token=35fec41e-91a2-41d0-b1c1-77b50be6f342"
+    //                         width="40px"></a>
+    //                 <div id="message_createSong"></div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // </div>`;
+    //     $("#modalUploadSong").html(content);
+
+        var myModal = new bootstrap.Modal(document.getElementById('modalUploadSong'), {
+            keyboard: false
+        })
+        myModal.show();
+
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-storage.js"></script>
@@ -113,7 +192,7 @@
                 const image = document.querySelector("#img");
                 image.src = url;
 
-                $("#img_uploaded").attr("src",url);
+                $("#img_uploaded").attr("src", url);
 
 
             })
@@ -138,13 +217,13 @@
     }
 </script>
 <script>
-    function save() {
-
+    function uploadSong() {
+        let userLogin=JSON.parse(localStorage.getItem("userLogin"))
         let name = $("#namesong").val();
         let description = $("#description").val();
         let img = $("#img_uploaded").attr("src");
         let artistId = $("#song_artist").val();
-        let userId = $("#song_user").val();
+        let userId = userLogin.id;
         let mp3 = $("#mp3_url").attr("src");
         console.log(img)
         let song = {
@@ -169,11 +248,11 @@
             type: "POST",
             url: "http://localhost:8080/api/songs",
             data: JSON.stringify(song),
-            success: function (){
-                alert("create song ok")
+            success: function () {
+                $("#message_createSong").text("Your song is uploaded successfully")
             },
             error: function (error) {
-
+                console.log("your error: "+error)
             }
         });
 

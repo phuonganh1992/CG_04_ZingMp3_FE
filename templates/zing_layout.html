@@ -8,31 +8,43 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../static/css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../static/css/login.css">
     <link rel="stylesheet" href="../static/css/search.css">
     <link rel="stylesheet" href="../static/css/card.css">
     <link rel="stylesheet" href="../static/css/playerPane.css">
     <link rel="stylesheet" href="../static/css/rotateImgPlaylist.css">
     <link rel="stylesheet" href="../static/css/rotateImgSong.css">
-    <script src="../static/js/loadLayout.js"></script>
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-analytics.js"></script>
     <script src="../static/js/playlist.js"></script>
     <script src="../static/js/redirect.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../static/js/user_login.js"></script>
     <script src="../static/js/playMusic.js"></script>
+    <script src="../static/js/loadLayout.js"></script>
+    <script src="../static/js/user_list.js"></script>
+    <script src="../static/js/user_view_edit.js"></script>
+    <script src="../static/js/uploadSong.js"></script>
     <script>
         function load(){
             hasUserLogin();
-            loadCardPlaylist()
+            loadCardPlaylist();
+            getArtistSong();
         }
     </script>
 </head>
 <body onload="load()">
 <div class="container-fluid" id="layout_whole">
     <div class="row fixed-top" id="layout_menu">
-        <nav class="navbar navbar-expand-lg navbar-light" id="menu_tab"
-             style="">
+        <nav class="navbar navbar-expand-lg navbar-light" id="menu_tab">
             <div class="container-fluid">
                 <a class="navbar-brand" onclick="redirectHome()"><img
                         src="https://icons.iconarchive.com/icons/amineworld/music-of-the-spheres/128/MP3-blue-icon.png"
@@ -44,10 +56,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Bài hát
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -63,7 +74,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Playlist
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -79,7 +90,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 BXH
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -95,7 +106,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Chủ đề
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -111,7 +122,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Top 100
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -126,7 +137,7 @@
                         <li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Chủ đề
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -141,7 +152,7 @@
                         <li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown7" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 ...
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -163,13 +174,13 @@
                             </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><img
+                            <a class="nav-link" onclick="showFormUploadSong()" ><img
                                     src="https://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Button-Upload-icon.png"
                                     style="width: 33px; margin-left: 20px;margin-top: -4px;margin-right: 20px"></a>
-                        </li>
 
+                        </li>
                         <li class="nav-item" id="btn_login_signup">
-                            <button class="btn btn-outline-info btn-info" type="submit" onclick="openLoginForm()">
+                            <button class="btn btn-outline-info btn-info" type="submit" onclick="openLoginForm()" style="color: white">
                                 Login/SignUp
                             </button>
                         </li>
@@ -185,6 +196,50 @@
             <div id="formLoginRegister"></div>
         </div>
     </div>
+    <div class="modal fade" id="modalUploadSong" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <a href="" style="position: inherit;margin-left: 480px;text-decoration: none;color: gray"
+                        data-bs-dismiss="modal">x</a>
+                     <div class="modal-header">
+                         <h5 class="modal-title">Upload Song</h5>
+                     </div>
+                     <div class="modal-body">
+                         <div class="mb-3">
+                             <a><label class="form-label">Name</label>
+                                 <input type="email" class="form-control" id="namesong" aria-describedby="emailHelp"
+                                        placeholder="Name of song"></a>
+
+                         </div>
+                         <div class="mb-3">
+                             <label class="form-label">description</label>
+                             <input type="text" class="form-control" id="description" placeholder="Description">
+                         </div>
+
+                         <div class="mb-3">
+                             <label class="form-label">Image</label>
+                             <input type="file" class="form-control" id="img">
+                             <button onclick="uploadImage()">Upload Image</button>
+                             <img src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_05_like.png?alt=media&token=2a53e1e4-1f29-4639-bd03-2ec4afee94be" alt="" id="img_uploaded" style="width: 40px;height: 40px">
+                         </div>
+                         <div class="mb-3">
+                             <label class="form-label">File mp3</label><input type="file" placeholder="file MP3" id="mp3">
+                             <button onclick="uploadAudio()">Upload mp3</button>
+                             <div id="audio_uploaded"></div>
+                         </div>
+                         <div>
+                             <select id="song_artist"></select>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <a onclick="uploadSong()"><img
+                                 src="https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/icon_01_home.png?alt=media&token=35fec41e-91a2-41d0-b1c1-77b50be6f342"
+                                 width="40px"></a>
+                         <div id="message_createSong"></div>
+                     </div>
+                 </div>
+             </div>
+         </div>
     <div class="row mt-3" id="layout_carousel">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -222,13 +277,43 @@
         </div>
         <div class="col-4 text-center" id="layout_mainTaskbar" >
             <div id="layout_topSong">
-
             </div>
         </div>
     </div>
     <div class="row mt-3" id="layout_footer">
-        <div class="col-12 text-center">
-            Footer
+        <div class="footer-dark">
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Hỗ trợ</h3>
+                            <ul>
+                                <li><a href="#">Trợ giúp</a></li>
+                                <li><a href="#">Sơ đồ</a></li>
+                                <li><a href="#">NCCI</a></li>
+                                <li><a href="#">Liên hệ quảng cáo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Sản phẩm khác</h3>
+                            <ul>
+                                <li><a href="#">Mobile App</a></li>
+                                <li><a href="#">Mobile Web</a></li>
+                                <li><a href="#">Smart TV</a></li>
+                                <li><a href="#">Desktop</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 item text">
+                            <h3>Công ty cổ phần MP3</h3>
+                            <p>Số 15, Tầng 1 Lô T04, khu đô thị Moncity, ngõ 2 đường Hàm Nghi, quận Nam Từ Liêm,TP. Hà Nội.</p>
+
+                            <p>  Giấy phép số 0000/GP-TTĐT do Sở Thông tin và Truyền thông Hà Nội cấp ngày 11 tháng 8 năm 2021</p>
+                        </div>
+                        <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    </div>
+                    <p class="copyright">Công ty cổ phần MP3 © 2021</p>
+                </div>
+            </footer>
         </div>
     </div>
 </div>
