@@ -1,4 +1,5 @@
 let audio = new Audio('');
+let time;
 function playMusic(songId) {
     $.ajax({
         type: "GET",
@@ -27,6 +28,8 @@ function playMusic(songId) {
         $(this).removeClass('fa-play');
         $('.song_long').text(Math.round(audioTotalTime * 100) / 100);
         updateCurrentTime();
+        console.log(time)
+
     });
 
     $('body').on('click', '#time', function () {
@@ -50,13 +53,14 @@ function playMusic(songId) {
 
     function updateCurrentTime() {
         setInterval(function () {
-            var time = audio.currentTime;
-            var minutes = Math.floor(time / 60);
-            var seconds = Math.floor(time);
+            time = audio.currentTime;
+            let minutes = Math.floor(time / 60);
+            let seconds = Math.floor(time);
             seconds = (seconds - (minutes * 60)) < 10 ? ('0' + (seconds - (minutes * 60))) : (seconds - (minutes * 60));
-            var currentTime = minutes + ':' + seconds;
+            let currentTime = minutes + ':' + seconds;
             $('.runing_time').text(currentTime);
             $("#time").val(time / audioTotalTime)
+
         }, 1000)
     }
 }
