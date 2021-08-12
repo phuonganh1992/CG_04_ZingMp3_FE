@@ -85,6 +85,7 @@ body.showLoginForm .popup {
 
 .popup .form .element {
     padding: 8px 20px;
+    height: 50px;
 }
 
 .popup .form .element label {
@@ -171,6 +172,4 @@ body.showLoginForm .popup {
 }
 h1{
     color: #00dbde;
-}
-button{background: #00dbde;
 }

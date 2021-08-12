@@ -274,6 +274,7 @@ function loadCardPlaylist() {
         type: "GET",
         url: "http://localhost:8080/playlists",
         success: function (data) {
+            console.log(data)
             let content = ``
             for (let i = 0; i < data.length; i++) {
                 content += `<div class="col-3 mt-1">                 

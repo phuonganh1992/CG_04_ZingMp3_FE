@@ -1,8 +1,7 @@
 function loadLayoutMenu(){
     console.log("load layout menu")
     let content=`<div class="row fixed-top" id="layout_menu">
-        <nav class="navbar navbar-expand-lg navbar-light"
-             style="background: url('https://firebasestorage.googleapis.com/v0/b/zingmp3-project.appspot.com/o/background_6.png?alt=media&token=a247cf31-31de-40f8-af17-20dc6e476a95')">
+        <nav class="navbar navbar-expand-lg navbar-light" id="menu_tab">
             <div class="container-fluid">
                 <a class="navbar-brand" onclick="redirectHome()"><img
                         src="https://icons.iconarchive.com/icons/amineworld/music-of-the-spheres/128/MP3-blue-icon.png"
@@ -14,10 +13,9 @@ function loadLayoutMenu(){
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Bài hát
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -33,7 +31,7 @@ function loadLayoutMenu(){
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Playlist
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -49,7 +47,7 @@ function loadLayoutMenu(){
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 BXH
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -65,7 +63,7 @@ function loadLayoutMenu(){
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Chủ đề
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -81,7 +79,7 @@ function loadLayoutMenu(){
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Top 100
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -96,7 +94,7 @@ function loadLayoutMenu(){
                         <li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 Chủ đề
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -111,7 +109,7 @@ function loadLayoutMenu(){
                         <li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown7" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                                 ...
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -139,7 +137,7 @@ function loadLayoutMenu(){
                         </li>
 
                         <li class="nav-item" id="btn_login_signup">
-                            <button class="btn btn-outline-info btn-info" type="submit" onclick="openLoginForm()">
+                            <button class="btn btn-outline-info btn-info" type="submit" onclick="openLoginForm()" style="color: white">
                                 Login/SignUp
                             </button>
                         </li>
@@ -211,8 +209,39 @@ function loadLayoutMainTaskbar(){
 
 function loadLayoutFooter(){
     let content=`<div class="row mt-3" id="layout_footer">
-        <div class="col-12 text-center">
-            Footer
+        <div class="footer-dark">
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Hỗ trợ</h3>
+                            <ul>
+                                <li><a href="#">Trợ giúp</a></li>
+                                <li><a href="#">Sơ đồ</a></li>
+                                <li><a href="#">NCCI</a></li>
+                                <li><a href="#">Liên hệ quảng cáo</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 col-md-3 item">
+                            <h3>Sản phẩm khác</h3>
+                            <ul>
+                                <li><a href="#">Mobile App</a></li>
+                                <li><a href="#">Mobile Web</a></li>
+                                <li><a href="#">Smart TV</a></li>
+                                <li><a href="#">Desktop</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 item text">
+                            <h3>Công ty cổ phần MP3</h3>
+                            <p>Số 15, Tầng 1 Lô T04, khu đô thị Moncity, ngõ 2 đường Hàm Nghi, quận Nam Từ Liêm,TP. Hà Nội.</p>
+
+                            <p>  Giấy phép số 0000/GP-TTĐT do Sở Thông tin và Truyền thông Hà Nội cấp ngày 11 tháng 8 năm 2021</p>
+                        </div>
+                        <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                    </div>
+                    <p class="copyright">Công ty cổ phần MP3 © 2021</p>
+                </div>
+            </footer>
         </div>
     </div>`;
     $("#layout_footer").html(content);
