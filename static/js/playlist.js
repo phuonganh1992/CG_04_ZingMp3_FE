@@ -293,6 +293,7 @@ function getPlaylistById(playlistId){
         success:function (playlist){
             content +=`<div class="row fixed-top" id="layout_menu"></div>
     <div class="row mt-3"  id="layout_login"></div>
+    <div class="modal fade" id="modalUploadSong"></div>
     <div class="row mt-3" id="layout_main" class="row">
         <div id="layout_mainPlaylist" class="col-3">
             <div class="row">
@@ -391,6 +392,7 @@ function getPlaylistById(playlistId){
             document.getElementById("layout_whole").innerHTML = content;
             loadLayoutMenu();
             loadLayoutLogin();
+            loadModalUploadForm();
             loadLayoutFooter();
             hasUserLogin();
         }

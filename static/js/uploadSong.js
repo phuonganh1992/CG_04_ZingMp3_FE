@@ -1,8 +1,15 @@
 function showFormUploadSong() {
-    var myModal = new bootstrap.Modal(document.getElementById('modalUploadSong'), {
-        keyboard: false
-    })
-    myModal.show();
+    let userLogin=JSON.parse(localStorage.getItem("userLogin"));
+    if(userLogin==null){
+        alert("Bạn phải đăng nhập để thực hiện chức năng này")
+        openLoginForm();
+    } else {
+        var myModal = new bootstrap.Modal(document.getElementById('modalUploadSong'), {
+            keyboard: false
+        })
+        myModal.show();
+    }
+
 }
 
 function uploadSong() {

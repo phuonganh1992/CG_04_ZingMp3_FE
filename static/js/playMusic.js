@@ -1,4 +1,4 @@
-let audio = new Audio('');
+
 function playMusic(songId) {
     $.ajax({
         type: "GET",
@@ -12,7 +12,6 @@ function playMusic(songId) {
     })
     setTimeout(() => {
         audio.pause();
-        let currentSong = JSON.parse(localStorage.getItem("currentSong"));
         $("#song_img").attr("src", currentSong.img);
         $("#song_name").text(currentSong.name);
 
