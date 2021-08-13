@@ -4,12 +4,13 @@ function showList() {
         type: "GET",
         url: "http://localhost:8080/playlists",
         success: function (data) {
-            let content = `<table class="table table-striped">
+            let content = `<table class="table table-striped table-hover">
         <thead>
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
+            <th scope="col">Img</th>
             <th scope="col">User</th>
             <th scope="col" colspan="2">Action</th>
         </tr>
@@ -28,9 +29,10 @@ function getListPlaylist(data) {
                       <th scope="row">${data.id}</th>
                       <td>${data.name}</td>
                       <td>${data.description}</td>
+                      <td><img src="${data.img}" width="50px" height="50px"></td>
                       <td>${data.user.username}</td>
                       <td>
-                 <button style="margin-right: 20px" onclick="editPlaylist(${data.id})" "type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalEdit">
+                 <button style="margin-right: 20px" onclick="editPlaylist(${data.id})" type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#modalEdit">
                     Edit
                 </button>
                 <button style=" margin-left: 20px" onclick="deletePLaylist(${data.id})"  type="button" class="btn btn-danger" >
@@ -97,7 +99,6 @@ function createPlaylist() {
 }
 
 function getUserPlaylist() {
-    console.log(1)
     $.ajax({
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -125,6 +126,7 @@ function resetForm() {
     document.getElementById('modalCreate__description').value = ""
     document.getElementById('modalCreate__img').value = ""
     document.getElementById('modalCreate__user').value = "1"
+    document.getElementById('main').value = ""
 }
 
 function editPlaylist(id) {
@@ -210,6 +212,11 @@ function loadModalPlaylist() {
                     <label class="form-label">Img</label>
                     <input type="text" class="form-control" id="modalCreate__img">
                 </div>
+                <div id="main">
+                     <input type="file" id="photo">
+                     <button onclick="uploadImagePlaylist()">Upload Image</button>
+                     <img id="image" src="" alt="">
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -262,7 +269,6 @@ function loadModalPlaylist() {
 </div>`;
     $("#modalPlaylist").html(content);
 }
-
 function loadCardPlaylist() {
     $.ajax({
         type: "GET",
@@ -398,7 +404,24 @@ function getPlaylistById(playlistId){
         }
     })
 }
+function uploadImagePlaylist(){
+    const  ref=firebase.storage().ref();
+    const file=document.querySelector("#photo").files[0];
+    const name=file.name;
+    const metadata={
+        contentType:file.type
+    }
+    const task=ref.child(name).put(file,metadata);
 
+    task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            alert("Image upload successful");
+            document.getElementById('main').innerHTML = `<img src="${url}" alt="" height="100px" width="100px"> </<img>`
+            document.getElementById('modalCreate__img').value = `${url}`
+
+        })
+}
 
 
 
