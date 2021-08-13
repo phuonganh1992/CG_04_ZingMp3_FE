@@ -27,6 +27,7 @@
             loadCardPlaylist()
         }
     </script>
+    <script src="../static/js/search.js"></script>
 </head>
 <body onload="load()">
 <div class="container-fluid" id="layout_whole">
@@ -154,10 +155,9 @@
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         <li>
-
-                            <form class="sbox" action="/search" method="get">
-                                <input class="stext" type="text" name="q" placeholder="Tìm kiếm bài hát/ ca sĩ...">
-                                <a class="sbutton" type="submit">
+                            <form class="sbox">
+                                <input class="stext" type="text" name="q" id="searchArtist" placeholder="Tìm kiếm bài hát/ ca sĩ...">
+                                <a class="sbutton" onclick="redirect_Artist()">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
@@ -226,6 +226,23 @@
             </div>
         </div>
     </div>
+
+
+
+<div class="row">
+    <div class="col-8" id="table-search-song">
+
+</div>
+    <div class="col-4">
+
+          <div class="row mt-3" id="viewSearchArtist"></div>
+
+        <div class="row mt-3" id="viewSearchArtist1"></div>
+    </div>
+</div>
+
+
+
     <div class="row mt-3" id="layout_footer">
         <div class="col-12 text-center">
             Footer

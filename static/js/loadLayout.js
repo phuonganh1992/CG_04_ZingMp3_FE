@@ -124,13 +124,16 @@ function loadLayoutMenu(){
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         <li>
-
                             <form class="sbox" action="/search" method="get">
-                                <input class="stext" type="text" name="q" placeholder="Tìm kiếm bài hát/ ca sĩ...">
-                                <a class="sbutton" type="submit">
+                                <input class="stext" type="text" id="searchArtist" name="q" placeholder="Tìm kiếm bài hát/ ca sĩ...">
+                                <a class="sbutton" type="submit" onclick="redirect_Artist()">
                                     <i class="fa fa-search"></i>
                                 </a>
                             </form>
+                            
+                            
+                            
+                            
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><img

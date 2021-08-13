@@ -18,4 +18,10 @@ function redirectOnePlaylist(){
     window.location.href="playlist_viewSong.html";
 }
 
+function redirectListArtist(){
+    window.location.href="artist_list.html";
+}
+function redirect_Show_Artist(){
+    window.location.href="search.html";
 
+}

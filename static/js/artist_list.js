@@ -9,6 +9,8 @@ function getAllArtist() {
         success: function (data) {
 console.log(data)
             let str = `<button onclick="create()"  >Add Artist</button>
+<input type="text" placeholder="Tìm kiếm ca sĩ"  id="nameArtist"><button onclick="searchArtist()">Search Artist</button>
+                            
 
 <table class="table table-striped">
 <div id="create_artist"></div>
@@ -219,5 +221,24 @@ function showArtist(id){
                 ' <center>  <h1> '+ data.description+'</h1></center>\n'
 
         }
+    });
+}
+function searchArtist(){
+let name=document.getElementById("nameArtist").value;
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "POST",
+        url: "http://localhost:8080/api/artists/search?name=" + name,
+            success: function (data) {
+            console.log(data)
+                document.getElementById("img_Artist").innerHTML = '  <img src="'+ data[0].image +'" alt="" id="image" style="width: 160px;height: 160px"> '
+
+                document.getElementById("showEditArtist").innerHTML =
+                    '<center>   <h1> '+ data[0].name+'</h1></center>\n' +
+                    ' <center>  <h1> '+ data[0].description+'</h1></center>\n'
+                }
     });
 }
