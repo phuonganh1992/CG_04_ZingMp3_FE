@@ -33,13 +33,16 @@
     <script src="../static/js/user_list.js"></script>
     <script src="../static/js/user_view_edit.js"></script>
     <script src="../static/js/uploadSong.js"></script>
+    <script src="../static/js/topSong.js"></script>
     <script>
         function load(){
             hasUserLogin();
             loadCardPlaylist();
+            loadTopSong();
             getArtistSong();
         }
     </script>
+
 </head>
 <body onload="load()">
 <div class="container-fluid" id="layout_whole">
@@ -176,8 +179,8 @@
                         <li class="nav-item">
                             <a class="nav-link" onclick="showFormUploadSong()" ><img
                                     src="https://icons.iconarchive.com/icons/hopstarter/soft-scraps/256/Button-Upload-icon.png"
-                                    style="width: 33px; margin-left: 20px;margin-top: -4px;margin-right: 20px"></a>
-
+                                    style="width: 33px; margin-left: 20px;margin-top: -4px;margin-right: 20px">
+                            </a>
                         </li>
                         <li class="nav-item" id="btn_login_signup">
                             <button class="btn btn-outline-info btn-info" type="submit" onclick="openLoginForm()" style="color: white">
@@ -270,13 +273,14 @@
     </div>
     <div class="row mt-3" id="layout_main">
         <div class="col-8 text-center" id="layout_mainContent" >
-            <!--            Main-->
+
             <div class="row" id="layout_playlist">
 
             </div>
         </div>
         <div class="col-4 text-center" id="layout_mainTaskbar" >
             <div id="layout_topSong">
+
             </div>
         </div>
     </div>

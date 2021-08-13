@@ -176,7 +176,6 @@ function login() {
                 success: function (userlogin) {
                     localStorage.setItem('userLogin', JSON.stringify(userlogin));
                     hasUserLogin();
-                    localStorage.setItem('haha','cười to')
                 }
             })
         }
